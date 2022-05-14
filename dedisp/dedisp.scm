@@ -1,5 +1,6 @@
 (define-module (grex packages dedisp)
   #:use-module (guix packages)
+  #:use-module (gnu packages algebra)
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module (guix licenses)
@@ -18,7 +19,10 @@
                     (commit commit)))
               (sha256 (base32 "14nr4mp9gwgq2a4bbm1442dv0pkx7w72wszvcbig5d5yk62vkjw6"))))
      (build-system cmake-build-system)
-     (inputs `(("cuda-toolkit" ,cuda)))
+     (inputs
+      `(("cuda-toolkit",cuda)
+        ("fftw",fftw)
+        ("fftwf",fftwf)))
      (synopsis "CUDA Based De-dispersion library")
      (description
       "This repository is derived from Ben Barsdell's original GPU De-dedispersion library
