@@ -3,6 +3,7 @@
   #:use-module (gnu services networking)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
+  #:use-module (gnu packages python)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
@@ -58,8 +59,15 @@
 
    ;; Base system packages
    (packages (append (list
+                      ;; Core stuff
                       git
-                      vim
+                      ;; Python nonsense
+                      python2
+                      python
+                      conda
+                      ;; Editors
                       emacs
+                      vim
+                      ;; SS
                       nss-certs)
                      %base-packages))))
