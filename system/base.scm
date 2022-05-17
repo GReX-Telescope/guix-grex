@@ -53,8 +53,7 @@
                  (supplementary-groups '("wheel"  ;; sudo
                                          "netdev" ;; network devices
                                          "tty"
-                                         "input"
-                                         "docker")))
+                                         "input")))
                 %base-user-accounts))
 
    ;; Base system packages
