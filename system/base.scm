@@ -22,6 +22,10 @@
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
 
+   ;; Guix told me to add this
+   (initrd-modules (append (list "mptspi")
+                           %base-initrd-modules))
+
    ;; US English Keyboard Layout
    (keyboard-layout (keyboard-layout "us"))
 
