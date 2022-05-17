@@ -1,16 +1,16 @@
 (define-module (system base)
   #:use-module (gnu)
   #:use-module (gnu services networking)
+  #:use-module (gnu services ssh)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages python)
+  #:use-module (gnu packages shells)
+  #:use-module (gnu packages certs)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd))
-
-(use-package-modules shells certs)
-(use-service-modules networking ssh)
 
 (define-public base-operating-system
   (operating-system
