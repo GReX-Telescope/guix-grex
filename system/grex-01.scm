@@ -9,11 +9,11 @@
  (host-name host)
  (file-systems (cons*
                 (file-system
-                 (device (uuid "abc123"))
+                 (device "/dev/sda2")
                  (mount-point "/")
                  (type "ext4"))
                 (file-system
-                 (device "/dev/foobar")
+                 (device "/dev/sda1")
                  (mount-point "/boot/efi")
                  (type "vfat"))
                 %base-file-systems)))
