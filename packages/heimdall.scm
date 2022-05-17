@@ -1,0 +1,36 @@
+(define-module (packages heimdall)
+  #:use-module (packages psrdada)
+  #:use-module (packages dedisp)
+  #:use-module (guix packages)
+  #:use-module (guix gexp)
+  #:use-module (gnu packages)
+  #:use-module (gnu packages base)
+  #:use-module (gnu packages boost)
+  #:use-module (gnu packages python)
+  #:use-module (gnu packages autotools)
+  #:use-module (guix git-download)
+  #:use-module (guix build-system gnu)
+  #:use-module (guix licenses)
+  #:use-module (non-free cuda))
+
+(define-public heimdall
+  (let ((commit "8ff5df3c019dc44d642cdf3f7a0bd17019cdc34f")
+        (revision "1"))
+    (package-with-c-toolchain
+     (package
+      (name "heimdall")
+      (version (git-version "0.0.0" revision commit))
+      (source (origin
+               (method git-fetch)
+               (uri (git-reference
+                     (url "https://github.com/GReX-Telescope/heimdall")
+                     (commit commit)))
+               (sha256 (base32 "0yj0bizdzch37qksga1cw2l251il37vl0759z2swi5af13alnbj8"))))
+      (build-system gnu-build-system)
+      (native-inputs (list autoconf automake libtool python))
+      (inputs (list cuda-11.0 psrdada dedisp boost))
+      (synopsis "Transient Detection Pipeline")
+      (description "")
+      (home-page "https://github.com/GReX-Telescope/heimdall")
+      (license gpl3))
+     `(("toolchain" ,(specification->package "gcc-toolchain@8"))))))

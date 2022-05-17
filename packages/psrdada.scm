@@ -3,16 +3,14 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages algebra)
   #:use-module (gnu packages linux)
-  #:use-module (gnu packages maths)
   #:use-module (gnu packages mpi)
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module (guix licenses)
-  #:use-module (non-free cuda)
-  #:use-module (non-free mkl))
+  #:use-module (non-free cuda))
 
 (define-public psrdada
-  (let ((commit "e9870e2f13778193424a235b06ca56e53a94f832")
+  (let ((commit "98d820ea95c055c65547fcdea11d7db3c7be86c6")
         (revision "1"))
     (package-with-c-toolchain
      (package
@@ -23,9 +21,9 @@
                (uri (git-reference
                      (url "https://github.com/GReX-Telescope/psrdada")
                      (commit commit)))
-               (sha256 (base32 "1vifwp2ygxa7kh10n972dqpcx49d3j7wfbjfriq88kq6klj2q7r0"))))
+               (sha256 (base32 "1zwi7jln2j5kb3zyr1csh616zh59wiqswds45fsqi0ylnr6amz9d"))))
       (build-system cmake-build-system)
-      (inputs (list cuda-11.0 fftw fftwf rdma-core mkl gsl hwloc))
+      (inputs (list cuda-11.0 rdma-core hwloc))
       (synopsis "PSRDADA is an Open Source software project to support the development of data acquisition and distributed analysis systems")
       (description
        "DADA stands for Distributed Acquisition and Data Analysis, and it consist of a C library and applications.

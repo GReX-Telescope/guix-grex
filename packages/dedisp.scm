@@ -1,28 +1,27 @@
 (define-module (packages dedisp)
   #:use-module (guix packages)
   #:use-module (gnu packages)
-  #:use-module (gnu packages algebra)
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module (guix licenses)
   #:use-module (non-free cuda))
 
 (define-public dedisp
-  (let ((commit "a146973db0b5080f1e2d8891af5285e66bee9829")
+  (let ((commit "ea08d4f2faaea885afca0d522f611a71642d298a")
         (revision "1"))
     (package-with-c-toolchain
      (package
       (name "dedisp")
-      (version (git-version "0.0.0" revision commit))
+      (version (git-version "1.0.1" revision commit))
       (source (origin
                (method git-fetch)
                (uri (git-reference
                      (url "https://github.com/GReX-Telescope/dedisp")
                      (commit commit)))
-               (sha256 (base32 "14nr4mp9gwgq2a4bbm1442dv0pkx7w72wszvcbig5d5yk62vkjw6"))))
+               (sha256 (base32 "0cwsi4k90rj5p6zxb855pdgv4msnqj8x3is4z3gwwnxzwgb753ns"))))
       (build-system cmake-build-system)
       (arguments '(#:tests? #f))
-      (inputs (list cuda-11.0 fftw fftwf))
+      (inputs (list cuda-11.0))
       (synopsis "CUDA Based De-dispersion library")
       (description
        "This repository is derived from Ben Barsdell's original GPU De-dedispersion library
