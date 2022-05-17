@@ -5,7 +5,6 @@
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
-  #:use-module (nongnu packages nvidia)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd))
 
