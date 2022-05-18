@@ -19,7 +19,7 @@
    (locale "en_US.utf8")
 
    ;; Use non-free Linux and firmware
-   (kernel linux)
+   (kernel linux-lts)
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
 
