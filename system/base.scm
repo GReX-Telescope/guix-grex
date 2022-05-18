@@ -62,16 +62,17 @@
                     %base-services))
 
    ;; Base system packages
-   (packages (append (list
-                      ;; Core stuff
-                      git
-                      ;; Python nonsense
-                      python2
-                      python
-                      conda
-                      ;; Editors
-                      emacs
-                      vim
-                      ;; SS
-                      nss-certs)
+   (packages (append (map specification->package
+                          (list
+                           ;; Core stuff
+                           "git"
+                           ;; Python nonsense
+                           "python2"
+                           "python"
+                           "conda"
+                           ;; Editors
+                           "emacs"
+                           "vim"
+                           ;; SS
+                           "nss-certs"))
                      %base-packages))))
