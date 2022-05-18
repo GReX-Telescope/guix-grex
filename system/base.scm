@@ -59,7 +59,19 @@
 
    ;; Services
    (services (cons* (service dhcp-client-service-type)
-                    %base-services))
+                    (modify-services
+                     %base-services
+                     (guix-service-type
+                      config => (guix-configuration
+                                 (inherit config)
+                                 (substitute-urls
+                                  (append (list "https://substitutes.nonguix.org"
+                                                "https://guix.bordeaux.inria.fr")
+                                          %default-substitute-urls))
+                                 (authorized-keys
+                                  (append (list (local-file "nonguix-key.pub")
+                                                (local-file "guixhpc-key.pub"))
+                                          %default-authorized-guix-keys))))))
 
    ;; Base system packages
    (packages (append (map specification->package
