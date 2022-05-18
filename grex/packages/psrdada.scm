@@ -1,4 +1,4 @@
-(define-module (packages psrdada)
+(define-module (grex packages psrdada)
   #:use-module (guix packages)
   #:use-module (gnu packages)
   #:use-module (gnu packages algebra)

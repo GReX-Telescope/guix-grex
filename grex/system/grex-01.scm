@@ -1,5 +1,5 @@
-(define-module (system grex-01)
-  #:use-module (system base)
+(define-module (grex system grex-01)
+  #:use-module (grex system base)
   #:use-module (gnu))
 
 (define host "grex-01")

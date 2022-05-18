@@ -1,4 +1,4 @@
-(define-module (system base)
+(define-module (grex system base)
   #:use-module (gnu)
   #:use-module (gnu services networking)
   #:use-module (gnu services ssh)

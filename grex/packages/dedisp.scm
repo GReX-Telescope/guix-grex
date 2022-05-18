@@ -1,4 +1,4 @@
-(define-module (packages dedisp)
+(define-module (grex packages dedisp)
   #:use-module (guix packages)
   #:use-module (gnu packages)
   #:use-module (guix git-download)

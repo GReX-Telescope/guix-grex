@@ -17,9 +17,9 @@
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;; Generate a bootable image (e.g. for USB sticks, etc.) with:
-;; $ guix system image --image-type=iso9660 system/install.scm
+;; $ guix system image --image-type=iso9660 grex/system/install.scm
 
-(define-module (system install)
+(define-module (grex system install)
   #:use-module (gnu system)
   #:use-module (gnu system install)
   #:use-module (gnu packages version-control)
@@ -31,9 +31,9 @@
   #:use-module (gnu packages mtools)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:export (installation-os-nonfree))
+  #:export (installation-grex))
 
-(define installation-os-nonfree
+(define installation-grex
   (operating-system
     (inherit installation-os)
     (kernel linux)
@@ -50,4 +50,4 @@
      (append (list exfat-utils fuse-exfat git curl stow vim emacs-no-x-toolkit)
              (operating-system-packages installation-os)))))
 
-installation-os-nonfree
+installation-grex
