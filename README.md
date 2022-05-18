@@ -10,6 +10,7 @@ To add the channel, add the following to your `~/.config/guix/channels.scm`
 ```scheme
 (cons (channel
         (name 'guix-grex)
-        (url "https://github.com/GReX-Telescope/guix-grex.git"))
+        (url "https://github.com/GReX-Telescope/guix-grex.git")
+        (branch "main"))
       %default-channels)
 ```
