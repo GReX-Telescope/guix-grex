@@ -69,8 +69,8 @@
                                                 "https://guix.bordeaux.inria.fr")
                                           %default-substitute-urls))
                                  (authorized-keys
-                                  (append (list (local-file "nonguix-key.pub")
-                                                (local-file "guixhpc-key.pub"))
+                                  (append (list (local-file "./nonguix-key.pub")
+                                                (local-file "./guixhpc-key.pub"))
                                           %default-authorized-guix-keys))))))
 
    ;; Base system packages
