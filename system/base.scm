@@ -57,6 +57,10 @@
                                          "input")))
                 %base-user-accounts))
 
+   ;; Services
+   (services (cons* (service dhcp-client-service-type)
+                    %base-services))
+
    ;; Base system packages
    (packages (append (list
                       ;; Core stuff
