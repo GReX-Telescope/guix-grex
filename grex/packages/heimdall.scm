@@ -1,4 +1,4 @@
-(define-module (grex packages heimdall)
+(define-module (grex packages heimdall-astro)
   #:use-module (grex packages psrdada)
   #:use-module (grex packages dedisp)
   #:use-module (guix packages)
@@ -13,12 +13,12 @@
   #:use-module (guix licenses)
   #:use-module (non-free cuda))
 
-(define-public heimdall
+(define-public heimdall-astro
   (let ((commit "8ff5df3c019dc44d642cdf3f7a0bd17019cdc34f")
         (revision "1"))
     (package-with-c-toolchain
      (package
-      (name "heimdall")
+      (name "heimdall-astro")
       (version (git-version "0.0.0" revision commit))
       (source (origin
                (method git-fetch)
