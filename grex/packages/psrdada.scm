@@ -22,7 +22,7 @@
                     (commit commit)))
               (sha256 (base32 "17v5ab1zgjbfnyj0ky1hf2ls6ps658a2dg7i78s38fk8yp243q7m"))))
      (build-system cmake-build-system)
-     (inputs (list cuda-11.7 rdma-core hwloc))
+     (inputs (list cuda-grex rdma-core hwloc))
      (synopsis "PSRDADA is an Open Source software project to support the development of data acquisition and distributed analysis systems")
      (description
       "DADA stands for Distributed Acquisition and Data Analysis, and it consist of a C library and applications.

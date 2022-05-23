@@ -27,7 +27,7 @@
                (base32 "1d71yrjbb48l3h29vcp1lbkfz8v37y9f38ywf6q8avx19n0rd9h2"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
-     (inputs (list cuda-11.7 psrdada dedisp boost rdma-core))
+     (inputs (list cuda-grex psrdada dedisp boost rdma-core))
      (synopsis "Transient Detection Pipeline")
      (description "")
      (home-page "https://github.com/GReX-Telescope/heimdall-astro")

@@ -20,7 +20,7 @@
               (sha256 (base32 "0b2r4s89gfhy6ygnkbf9g4v5328gwdvxfh0037q7bwyx2mpf46a2"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
-     (inputs (list cuda-11.7))
+     (inputs (list cuda-grex))
      (synopsis "CUDA Based De-dispersion library")
      (description
       "This repository is derived from Ben Barsdell's original GPU De-dedispersion library

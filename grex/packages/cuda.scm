@@ -211,4 +211,13 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
      `(("which" ,which)
        ,@(package-native-inputs cuda-8.0)))))
 
-(define-public cuda-grex cuda-11.7)
+(define-public cuda-11.6
+  (package
+   (inherit cuda-11.7)
+   (version "11.6.2")
+   (source
+    (cuda-source
+     "https://developer.download.nvidia.com/compute/cuda/11.6.2/local_installers/cuda_11.6.2_510.47.03_linux.run"
+     "14s53nxdmvyrfwb2q204cjdsq59h1jkb9khz9kpjr9ajrhysgdwr"))))
+
+(define-public cuda-grex cuda-11.6)
