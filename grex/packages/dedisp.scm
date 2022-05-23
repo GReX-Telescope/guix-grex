@@ -7,7 +7,7 @@
   #:use-module (non-free cuda))
 
 (define-public dedisp
-  (let ((commit "ea08d4f2faaea885afca0d522f611a71642d298a")
+  (let ((commit "24b909e0df2d0c3834f72789f6e655a6265ed23f")
         (revision "1"))
     (package-with-c-toolchain
      (package
@@ -18,7 +18,7 @@
                (uri (git-reference
                      (url "https://github.com/GReX-Telescope/dedisp")
                      (commit commit)))
-               (sha256 (base32 "0cwsi4k90rj5p6zxb855pdgv4msnqj8x3is4z3gwwnxzwgb753ns"))))
+               (sha256 (base32 "0b2r4s89gfhy6ygnkbf9g4v5328gwdvxfh0037q7bwyx2mpf46a2"))))
       (build-system cmake-build-system)
       (arguments '(#:tests? #f))
       (inputs (list cuda-11.0))

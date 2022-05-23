@@ -6,28 +6,25 @@
   #:use-module (gnu packages)
   #:use-module (gnu packages base)
   #:use-module (gnu packages boost)
-  #:use-module (gnu packages python)
-  #:use-module (gnu packages autotools)
   #:use-module (guix git-download)
-  #:use-module (guix build-system gnu)
+  #:use-module (guix build-system cmake)
   #:use-module (guix licenses)
   #:use-module (non-free cuda))
 
 (define-public heimdall-astro
-  (let ((commit "8ff5df3c019dc44d642cdf3f7a0bd17019cdc34f")
+  (let ((commit "05de726d2b78c41de6439eb12583da2437829e7d")
         (revision "1"))
     (package-with-c-toolchain
      (package
       (name "heimdall-astro")
-      (version (git-version "0.0.0" revision commit))
+      (version (git-version "0.1" revision commit))
       (source (origin
                (method git-fetch)
                (uri (git-reference
-                     (url "https://github.com/GReX-Telescope/heimdall")
+                     (url "https://github.com/GReX-Telescope/heimdall-astro")
                      (commit commit)))
                (sha256 (base32 "0yj0bizdzch37qksga1cw2l251il37vl0759z2swi5af13alnbj8"))))
-      (build-system gnu-build-system)
-      (native-inputs (list autoconf automake libtool python))
+      (build-system cmake-build-system)
       (inputs (list cuda-11.0 psrdada dedisp boost))
       (synopsis "Transient Detection Pipeline")
       (description "")
