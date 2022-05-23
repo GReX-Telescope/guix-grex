@@ -11,7 +11,7 @@
 
 (define-public psrdada
   (let ((commit "78b01e857a765caade0c1efaaab4558913e035ec")
-        (revision "1"))
+        (revision "2"))
     (package
      (name "psrdada")
      (version (git-version "1.0.0" revision commit))

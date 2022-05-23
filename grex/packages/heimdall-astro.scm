@@ -14,7 +14,7 @@
 
 (define-public heimdall-astro
   (let ((commit "a63949249ae333bbe4253141019c62517c3baa81")
-        (revision "1"))
+        (revision "2"))
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))

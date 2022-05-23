@@ -8,7 +8,7 @@
 
 (define-public dedisp
   (let ((commit "24b909e0df2d0c3834f72789f6e655a6265ed23f")
-        (revision "1"))
+        (revision "2"))
     (package
      (name "dedisp")
      (version (git-version "1.0.1" revision commit))
