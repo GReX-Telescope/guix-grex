@@ -10,17 +10,17 @@
   #:use-module (grex packages cuda))
 
 (define-public psrdada
-  (let ((commit "98d820ea95c055c65547fcdea11d7db3c7be86c6")
+  (let ((commit "78b01e857a765caade0c1efaaab4558913e035ec")
         (revision "1"))
     (package
      (name "psrdada")
-     (version (git-version "0.0.0" revision commit))
+     (version (git-version "1.0.0" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
                     (url "https://github.com/GReX-Telescope/psrdada")
                     (commit commit)))
-              (sha256 (base32 "1zwi7jln2j5kb3zyr1csh616zh59wiqswds45fsqi0ylnr6amz9d"))))
+              (sha256 (base32 "17v5ab1zgjbfnyj0ky1hf2ls6ps658a2dg7i78s38fk8yp243q7m"))))
      (build-system cmake-build-system)
      (inputs (list cuda-11.7 rdma-core hwloc))
      (synopsis "PSRDADA is an Open Source software project to support the development of data acquisition and distributed analysis systems")
