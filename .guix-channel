@@ -2,9 +2,6 @@
  (version 0)
  (dependencies
   (channel
-   (name guix-hpc-non-free)
-   (url "https://gitlab.inria.fr/guix-hpc/guix-hpc-non-free.git"))
-  (channel
    (name nonguix)
    (url "https://gitlab.com/nonguix/nonguix")
    ;; Enable signature verification:
