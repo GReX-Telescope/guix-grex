@@ -17,7 +17,7 @@
               (uri (git-reference
                     (url "https://github.com/GReX-Telescope/dedisp")
                     (commit commit)))
-              (sha256 (base32 "1n2wi9q5awnjfmfrqqrvpjffmbih2rzpf34s57i18vc29923awfv"))))
+              (sha256 (base32 "0hjdk4kmmd2p4qaqnrvlwjv40fz5yqv440f1w4z726ib2ayf0dvk"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
      (inputs (list cuda-grex))
