@@ -7,8 +7,8 @@
   #:use-module (grex packages cuda))
 
 (define-public dedisp
-  (let ((commit "24b909e0df2d0c3834f72789f6e655a6265ed23f")
-        (revision "2"))
+  (let ((commit "3b3d24d31ce09220810d3130d335d86739b0bdb5")
+        (revision "54"))
     (package
      (name "dedisp")
      (version (git-version "1.0.1" revision commit))
@@ -17,7 +17,7 @@
               (uri (git-reference
                     (url "https://github.com/GReX-Telescope/dedisp")
                     (commit commit)))
-              (sha256 (base32 "0b2r4s89gfhy6ygnkbf9g4v5328gwdvxfh0037q7bwyx2mpf46a2"))))
+              (sha256 (base32 "1n2wi9q5awnjfmfrqqrvpjffmbih2rzpf34s57i18vc29923awfv"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
      (inputs (list cuda-grex))
