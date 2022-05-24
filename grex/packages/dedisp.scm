@@ -7,8 +7,8 @@
   #:use-module (grex packages cuda))
 
 (define-public dedisp
-  (let ((commit "3b3d24d31ce09220810d3130d335d86739b0bdb5")
-        (revision "54"))
+  (let ((commit "61e898dbdccf521b947d0ed872fc5a7383939d7f")
+        (revision "57"))
     (package
      (name "dedisp")
      (version (git-version "1.0.1" revision commit))
