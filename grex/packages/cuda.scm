@@ -220,4 +220,13 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
      "https://developer.download.nvidia.com/compute/cuda/11.6.2/local_installers/cuda_11.6.2_510.47.03_linux.run"
      "14s53nxdmvyrfwb2q204cjdsq59h1jkb9khz9kpjr9ajrhysgdwr"))))
 
-(define-public cuda-grex cuda-11.6)
+(define-public cuda-11.5
+  (package
+   (inherit cuda-11.7)
+   (version "11.5.2")
+   (source
+    (cuda-source
+     "https://developer.download.nvidia.com/compute/cuda/11.5.2/local_installers/cuda_11.5.2_495.29.05_linux.run"
+     "14s53nxdmvyrfwb2q204cjdsq59h1jkb9khz9kpjr9ajrhysgdwr"))))
+
+(define-public cuda-grex cuda-11.5)
