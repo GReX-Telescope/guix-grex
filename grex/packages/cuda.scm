@@ -140,14 +140,14 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
               "https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run"
               "1i4xrsqbad283qffvysn88w2pmxzxbbby41lw0j1113z771akv4w")))
 
-(define-public cuda-11.7
+(define-public cuda-11.0
   (package
     (inherit cuda-8.0)
-    (version "11.7.0")
+    (version "11.0.3")
     (source
      (cuda-source
-      "https://developer.download.nvidia.com/compute/cuda/11.7.0/local_installers/cuda_11.7.0_515.43.04_linux.run"
-      "09igi62w2vg143ldshnh8ar6spxczn6kmr3q3wxm8y8zpb5xyzq8"))
+      "https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda_11.0.3_450.51.06_linux.run"
+      "1h4c69nfrgm09jzv8xjnjcvpq8n4gnlii17v3wzqry5d13jc8ydh"))
     (outputs '("out"))                         ;XXX: no documentation for now
     (arguments
      (substitute-keyword-arguments (package-arguments cuda-8.0)
@@ -213,7 +213,7 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
 
 (define-public cuda-11.6
   (package
-   (inherit cuda-11.7)
+   (inherit cuda-11.0)
    (version "11.6.2")
    (source
     (cuda-source
@@ -222,11 +222,11 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
 
 (define-public cuda-11.5
   (package
-   (inherit cuda-11.7)
+   (inherit cuda-11.0)
    (version "11.5.2")
    (source
     (cuda-source
      "https://developer.download.nvidia.com/compute/cuda/11.5.2/local_installers/cuda_11.5.2_495.29.05_linux.run"
      "19kkgfcq33q30xnj7mnc82h5vcj1fqn35bis19pm5fmw0azrm5bl"))))
 
-(define-public cuda-grex cuda-11.6)
+(define-public cuda-grex cuda-11.0)
