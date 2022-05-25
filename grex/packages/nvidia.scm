@@ -13,7 +13,7 @@
                 (format #f "NVIDIA-Linux-x86_64-~a" version)))
    (sha256 (base32 "1cjp12p6kwpdq9m9j7a6hzy7p307kg4gy6jyslfr9lkkpiqzm1w0"))
    (method url-fetch)
-   (file-name (string-append "nvidia-driver-" version "-checkout"))))
+   (file-name (string-append "nvidia-driver-" nvidia-version "-checkout"))))
 
 (define-public nvidia-driver-510
   (package
