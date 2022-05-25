@@ -119,9 +119,9 @@
      (map specification->package
           (list
            ;; Nvidia Driver itself and accoutrements
-           "nvidia-driver-510"
-           "nvidia-libs-510"
-           "nvidia-settings-510"
+           "nvidia-driver"
+           "nvidia-libs"
+           "nvidia-setting"
            ;; Core stuff
            "git"
            ;; Python nonsense
