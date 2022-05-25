@@ -45,7 +45,7 @@
    (method url-fetch)
    (file-name (string-append "nvidia-driver-" nvidia-version "-checkout"))))
 
-(define-public nvidia-driver-510
+(define-public nvidia-driver
   (package
     (name "nvidia-driver")
     (version nvidia-version)
@@ -260,7 +260,7 @@ Further xorg should be configured by adding:
 (drivers '(\"nvidia\"))} to @code{xorg-configuration}.")
     (license (license:nonfree (format #f "file:///share/doc/nvidia-driver-~a/LICENSE" version)))))
 
-(define-public nvidia-libs-510
+(define-public nvidia-libs
   (package
     (name "nvidia-libs")
     (version nvidia-version)
@@ -378,7 +378,7 @@ packages that have been compiled with a mesa output, take a look at the nvda
 package.")
     (license (license:nonfree (format #f "file:///share/doc/nvidia-driver-~a/LICENSE" version)))))
 
-(define-public nvidia-settings-510
+(define-public nvidia-settings
   (package
     (name "nvidia-settings")
     (version nvidia-version)
