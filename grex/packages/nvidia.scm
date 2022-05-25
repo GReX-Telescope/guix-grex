@@ -15,7 +15,7 @@
      (uri (format #f "http://us.download.nvidia.com/XFree86/Linux-x86_64/~a/~a.run"
                   version
                   (format #f "NVIDIA-Linux-x86_64-~a" version)))
-     (sha256 (base32 "0krwcxc0j19vjnk8sv6mx1lin2rm8hcfhc2hg266846jvcws1dsg"))
+     (sha256 (base32 "1krwcxc0j19vjnk8sv6mx1lin2rm8hcfhc2hg266846jvcws1dsg"))
      (method url-fetch)
      (file-name (string-append "nvidia-driver-" version "-checkout"))))))
 
@@ -28,7 +28,7 @@
      (uri (format #f "http://us.download.nvidia.com/XFree86/Linux-x86_64/~a/~a.run"
                   version
                   (format #f "NVIDIA-Linux-x86_64-~a" version)))
-     (sha256 (base32 "0krwcxc0j19vjnk8sv6mx1lin2rm8hcfhc2hg266846jvcws1dsg"))
+     (sha256 (base32 "1krwcxc0j19vjnk8sv6mx1lin2rm8hcfhc2hg266846jvcws1dsg"))
      (method url-fetch)
      (file-name (string-append "nvidia-driver-" version "-checkout"))))))
 
@@ -41,6 +41,6 @@
      (uri (git-reference
            (url "https://github.com/NVIDIA/nvidia-settings")
            (commit version)))
-     (sha256 (base32 "1lnj5hwmfkzs664fxlhljqy323394s1i7qzlpsjyrpm07sa93bky"))
+     (sha256 (base32 "0lnj5hwmfkzs664fxlhljqy323394s1i7qzlpsjyrpm07sa93bky"))
      (method git-fetch)
      (file-name (git-file-name "nvidia-settings" version))))))
