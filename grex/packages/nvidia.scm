@@ -26,7 +26,7 @@
   #:use-module (gnu packages python)
   #:use-module (gnu packages video)
   #:use-module (gnu packages xorg)
-  #:use-module (gnu pacakges xdisorg)
+  #:use-module (gnu packages xdisorg)
   #:use-module (nongnu packages linux)
   #:use-module (ice-9 match)
   #:use-module (ice-9 regex)
