@@ -35,19 +35,26 @@
 
 (define installation-grex
   (operating-system
-    (inherit installation-os)
-    (kernel linux)
-    (firmware (list linux-firmware))
+   (inherit installation-os)
+   (kernel linux)
+   (firmware (list linux-firmware))
 
-    ;; Add the 'net.ifnames' argument to prevent network interfaces
-    ;; from having really long names.  This can cause an issue with
-    ;; wpa_supplicant when you try to connect to a wifi network.
-    ;; Blacklist nouveau for nonfree nvidia drivers down the road
-    (kernel-arguments '("quiet" "modprobe.blacklist=nouveau" "net.ifnames=0"))
+   ;; Add the 'net.ifnames' argument to prevent network interfaces
+   ;; from having really long names.  This can cause an issue with
+   ;; wpa_supplicant when you try to connect to a wifi network.
+   ;; Blacklist nouveau for nonfree nvidia drivers down the road
+   (kernel-arguments '("quiet" "modprobe.blacklist=nouveau" "net.ifnames=0"))
 
-    ;; Add some extra packages useful for the installation process
-    (packages
-     (append (list exfat-utils fuse-exfat git curl stow vim emacs-no-x-toolkit)
-             (operating-system-packages installation-os)))))
+   (services
+    (cons*
+     ;; Include the channel file so that it can be used during installation
+     (simple-service 'channel-file etc-service-type
+                     (list `("channels.scm" ,(local-file ".base-channels.scm"))))
+     (operating-system-user-services installation-os)))
+
+   ;; Add some extra packages useful for the installation process
+   (packages
+    (append (list exfat-utils fuse-exfat git curl stow vim emacs-no-x-toolkit)
+            (operating-system-packages installation-os)))))
 
 installation-grex
