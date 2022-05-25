@@ -2,6 +2,7 @@
   #:use-module (gnu)
   #:use-module (gnu services networking)
   #:use-module (gnu services ssh)
+  #:use-module (gnu services linux)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages python)
@@ -10,7 +11,18 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
+  #:use-module (nongnu packages nvidia)
   #:use-module (nongnu system linux-initrd))
+
+(define admin-groups '("wheel" "netdev" "tty" "input"))
+
+(define-public (admin-user username)
+  (user-account
+   (name username)
+   (group "users")
+   (comment "")
+   (home-directory (string-append "/home/" username))
+   (supplementary-groups admin-groups)))
 
 (define-public base-operating-system
   (operating-system
@@ -23,68 +35,98 @@
    (firmware (list linux-firmware))
    (initrd microcode-initrd)
 
+   ;; Blacklist the nouveau driver as we're using non-free nvidia
+   ;; At least until we get a build of the FOSS driver
+   (kernel-arguments (append
+                      '("modprobe.blacklist=nouveau")
+                      %default-kernel-arguments))
+
+   ;; Tell guix that the nvidia driver is loadable
+   (kernel-loadable-modules (list nvidia-driver))
+
    ;; Guix told me to add this
-   (initrd-modules (append (list "mptspi")
-                           %base-initrd-modules))
+   (initrd-modules
+    (append (list "mptspi")
+            %base-initrd-modules))
 
    ;; US English Keyboard Layout
    (keyboard-layout (keyboard-layout "us"))
 
    ;; UEFI variant of GRUB with EFI System
-   (bootloader (bootloader-configuration
-                (bootloader grub-efi-bootloader)
-                (targets '("/boot/efi"))
-                (keyboard-layout keyboard-layout)))
+   (bootloader
+    (bootloader-configuration
+     (bootloader grub-efi-bootloader)
+     (targets '("/boot/efi"))
+     (keyboard-layout keyboard-layout)))
 
    ;; Dummy file system we'll overwrite
-   (file-systems (cons*
-                  (file-system
-                   (mount-point "/tmp")
-                   (device "none")
-                   (type "tmpfs")
-                   (check? #f))
-                  %base-file-systems))
+   (file-systems
+    (cons*
+     (file-system
+      (mount-point "/tmp")
+      (device "none")
+      (type "tmpfs")
+      (check? #f))
+     %base-file-systems))
 
    ;; Default User
-   (users (cons (user-account
-                 (name "grex")
-                 (comment "GReX User")
-                 (group "users")
-                 (home-directory "/home/grex")
-                 (supplementary-groups '("wheel"  ;; sudo
-                                         "netdev" ;; network devices
-                                         "tty"
-                                         "input")))
-                %base-user-accounts))
+   (users
+    (cons
+     (admin-user "grex")
+     %base-user-accounts))
 
    ;; Services
-   (services (cons* (service dhcp-client-service-type)
-                    (modify-services
-                     %base-services
-                     (guix-service-type
-                      config => (guix-configuration
-                                 (inherit config)
-                                 (substitute-urls
-                                  (append (list "https://substitutes.nonguix.org"
-                                                "https://guix.bordeaux.inria.fr")
-                                          %default-substitute-urls))
-                                 (authorized-keys
-                                  (append (list (local-file "./nonguix-key.pub")
-                                                (local-file "./guixhpc-key.pub"))
-                                          %default-authorized-guix-keys)))))))
+   (services
+    (cons*
+     ;; DHCP all network cards by default
+     (service dhcp-client-service-type)
+
+     ;; Enable SSH
+     (service openssh-service-type
+              (openssh-configuration
+               (password-authentication? #t)
+               (x11-forwarding? #t)))
+
+     ;; Create udev rule for nvidia
+     (simple-service
+      'custom-udev-rules udev-service-type
+      (list nvidia-driver))
+
+     ;; Ensure the nvidia kernel modules load
+     (service kernel-module-loader-service-type
+              '("ipmi_devintf"
+                "nvidia"
+                "nvidia_modeset"
+                "nvidia_uvm"))
+
+     ;; Allow substitutes
+     (modify-services
+      %base-services
+      (guix-service-type
+       config => (guix-configuration
+                  (inherit config)
+                  (substitute-urls
+                   (append (list "https://substitutes.nonguix.org")
+                           %default-substitute-urls))
+                  (authorized-keys
+                   (append (list (local-file "./nonguix-key.pub")
+                                 (local-file "./guixhpc-key.pub"))
+                           %default-authorized-guix-keys)))))))
 
    ;; Base system packages
-   (packages (append (map specification->package
-                          (list
-                           ;; Core stuff
-                           "git"
-                           ;; Python nonsense
-                           "python2"
-                           "python"
-                           "conda"
-                           ;; Editors
-                           "emacs"
-                           "vim"
-                           ;; SS
-                           "nss-certs"))
-                     %base-packages))))
+   (packages
+    (append
+     (map specification->package
+          (list
+           ;; Core stuff
+           "git"
+           ;; Python nonsense
+           "python2"
+           "python"
+           "conda"
+           ;; Editors
+           "emacs"
+           "vim"
+           ;; SS
+           "nss-certs"))
+     %base-packages))))
