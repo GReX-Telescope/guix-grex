@@ -49,7 +49,7 @@
     (cons*
      ;; Include the channel file so that it can be used during installation
      (simple-service 'channel-file etc-service-type
-                     (list `("channels.scm" ,(local-file ".base-channels.scm"))))
+                     (list `("channels.scm" ,(local-file ".channel/channels.scm"))))
      (operating-system-user-services installation-os)))
 
    ;; Add some extra packages useful for the installation process
