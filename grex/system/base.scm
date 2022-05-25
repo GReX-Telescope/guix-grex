@@ -42,7 +42,7 @@
                       %default-kernel-arguments))
 
    ;; Tell guix that the nvidia driver is loadable
-   (kernel-loadable-modules (list nvidia-driver))
+   (kernel-loadable-modules (list nvidia-driver-510))
 
    ;; Guix told me to add this
    (initrd-modules
@@ -90,7 +90,7 @@
      ;; Create udev rule for nvidia
      (simple-service
       'custom-udev-rules udev-service-type
-      (list nvidia-driver))
+      (list nvidia-driver-510))
 
      ;; Ensure the nvidia kernel modules load
      (service kernel-module-loader-service-type
@@ -118,8 +118,10 @@
     (append
      (map specification->package
           (list
-           ;; Nvidia Driver itself
-           "nvidia-driver"
+           ;; Nvidia Driver itself and accoutrements
+           "nvidia-driver-510"
+           "nvidia-libs-510"
+           "nvidia-settings-510"
            ;; Core stuff
            "git"
            ;; Python nonsense
