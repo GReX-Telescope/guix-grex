@@ -229,4 +229,5 @@ libraries for NVIDIA GPUs, all of which are proprietary.")
      "https://developer.download.nvidia.com/compute/cuda/11.5.2/local_installers/cuda_11.5.2_495.29.05_linux.run"
      "19kkgfcq33q30xnj7mnc82h5vcj1fqn35bis19pm5fmw0azrm5bl"))))
 
-(define-public cuda-grex cuda-11.0)
+;; Pin this to 11.5 to make sure CMake/Thrust is happy
+(define-public cuda-grex cuda-11.5)
