@@ -9,6 +9,7 @@
 (define-public nvidia-driver-510
   (package
    (inherit nvidia-driver)
+   (name "nvidia-driver-510")
    (version nvidia-version)
    (source
     (origin
@@ -22,6 +23,7 @@
 (define-public nvidia-libs-510
   (package
    (inherit nvidia-libs)
+   (name "nvidia-libs-510")
    (version nvidia-version)
    (source
     (origin
@@ -35,6 +37,7 @@
 (define-public nvidia-settings-510
   (package
    (inherit nvidia-settings)
+   (name "nvidia-settings-510")
    (version nvidia-version)
    (source
     (origin
