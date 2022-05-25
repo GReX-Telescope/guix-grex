@@ -118,6 +118,8 @@
     (append
      (map specification->package
           (list
+           ;; Nvidia Driver itself
+           "nvidia-driver"
            ;; Core stuff
            "git"
            ;; Python nonsense
@@ -125,7 +127,7 @@
            "python"
            "conda"
            ;; Editors
-           "emacs"
+           "emacs-no-x-toolkit"
            "vim"
            ;; SS
            "nss-certs"))
