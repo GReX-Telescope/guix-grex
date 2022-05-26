@@ -45,7 +45,7 @@
   (cons
    (user-account
     (inherit (admin-user "kiran"))
-    (shell (file-append zsh "/bin/zsh")))
+    (shell (file-append fish "/bin/fish")))
    (append
     (map admin-user '("liam" "vikram"))
     (operating-system-users base-operating-system)))))
