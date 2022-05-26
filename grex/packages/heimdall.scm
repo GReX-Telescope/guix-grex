@@ -1,4 +1,4 @@
-(define-module (grex packages heimdall-astro)
+(define-module (grex packages heimdall)
   #:use-module (grex packages psrdada)
   #:use-module (grex packages dedisp)
   #:use-module (grex packages cuda)
