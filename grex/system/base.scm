@@ -9,6 +9,7 @@
   #:use-module (gnu packages shells)
   #:use-module (gnu packages certs)
   #:use-module (gnu packages version-control)
+  #:use-module (gnu packages compression)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
   #:use-module (grex packages nvidia)
@@ -116,21 +117,21 @@
    ;; Base system packages
    (packages
     (append
-     (map specification->package
-          (list
-           ;; Nvidia Driver itself and accoutrements
-       ;    "nvidia-driver"
-       ;    "nvidia-libs"
-       ;    "nvidia-setting"
-           ;; Core stuff
-           "git"
-           ;; Python nonsense
-           "python2"
-           "python"
-           "conda"
-           ;; Editors
-           "emacs-no-x-toolkit"
-           "vim"
-           ;; SS
-           "nss-certs"))
+     (list
+      ;; Nvidia Driver itself and accoutrements
+      nvidia-driver
+      nvidia-libs
+      ;; Core stuff
+      git
+      ;; Python nonsense
+      python2
+      python
+      conda
+      ;; Editors
+      emacs-no-x-toolkit
+      vim
+      ;; SS
+      nss-certs
+      ;; 7z needed for Julia's package manager
+      p7zip)
      %base-packages))))
