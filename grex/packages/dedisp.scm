@@ -7,8 +7,8 @@
   #:use-module (grex packages cuda))
 
 (define-public dedisp
-  (let ((commit "6783299eb061974bdbc95a3c6f7f43c090974839")
-        (revision "60"))
+  (let ((commit "4e05d601c8fa6730dae9a94e41c6b3af2e693776")
+        (revision "61"))
     (package
      (name "dedisp")
      (version (git-version "1.0.1" revision commit))
@@ -17,9 +17,9 @@
               (uri (git-reference
                     (url "https://github.com/GReX-Telescope/dedisp")
                     (commit commit)))
-              (sha256 (base32 "0099cvkdsm0vpqsxjfyxlyssl73s4xpqwmb6x8vyqpcw8sppf4n7"))))
+              (sha256 (base32 "050swi2dx3nzkvii9w9j9524f64s78f00m7hdmqahj7d9z0csywj"))))
      (build-system cmake-build-system)
-     (arguments '(#:tests? #f))
+     (arguments '(#:tests? #f)) ; Requires a CUDA runtime
      (inputs (list cuda-grex))
      (synopsis "CUDA Based De-dispersion library")
      (description
