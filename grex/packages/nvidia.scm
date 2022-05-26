@@ -40,8 +40,8 @@
 (define driver-source
   (origin
    (uri (format #f "http://us.download.nvidia.com/XFree86/Linux-x86_64/~a/~a.run"
-                version
-                (format #f "NVIDIA-Linux-x86_64-~a" version)))
+                nvidia-version
+                (format #f "NVIDIA-Linux-x86_64-~a" nvidia-version)))
    (sha256 (base32 "1cjp12p6kwpdq9m9j7a6hzy7p307kg4gy6jyslfr9lkkpiqzm1w0"))
    (method url-fetch)
    (file-name (string-append "nvidia-driver-" nvidia-version "-checkout"))))
