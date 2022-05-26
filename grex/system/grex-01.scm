@@ -27,7 +27,7 @@
     (type "vfat"))
    ;; 8TB Storage Drive, not sure what goes here yet
    (file-system
-    (deivce "/dev/sdb1")
+    (device "/dev/sdb1")
     (mount-point "/mnt/storage")
     (type "ext4"))
    %base-file-systems))
