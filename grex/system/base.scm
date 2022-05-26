@@ -131,7 +131,6 @@
       ;; Core stuff
       git
       ;; Python nonsense
-      python2
       python
       conda
       ;; Editors
