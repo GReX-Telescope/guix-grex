@@ -4,8 +4,7 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module (guix licenses)
-  #:use-module (grex packages cuda)
-  #:use-module (grex packages nvidia))
+  #:use-module (grex packages cuda))
 
 (define-public dedisp
   (let ((commit "6783299eb061974bdbc95a3c6f7f43c090974839")
