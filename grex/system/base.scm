@@ -95,6 +95,9 @@
       (list nvidia-driver))
 
      ;; Hard code in the LD_LIBRARY_PATH to the CUDA driver
+     ;; We need this because *all* CUDA stuff pretty much needs
+     ;; dynamic access to the driver's specific cuda runtime
+     ;; Shared libraries
      ;; RMS forgive me
      (simple-service
       'cuda-ld-path session-environment-service-type
