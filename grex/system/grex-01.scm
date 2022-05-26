@@ -25,6 +25,11 @@
     (device "/dev/sda1")
     (mount-point "/boot/efi")
     (type "vfat"))
+   ;; 8TB Storage Drive, not sure what goes here yet
+   (file-system
+    (deivce "/dev/sdb1")
+    (mount-point "/mnt/storage")
+    (type "ext4"))
    %base-file-systems))
 
  ;; We need to configure system-specific NIC as they need
