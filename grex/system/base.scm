@@ -11,6 +11,7 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages package-management)
+  #:use-module (gnu system pam)
   #:use-module (nongnu packages linux)
   #:use-module (grex packages nvidia)
   #:use-module (nongnu system linux-initrd))
@@ -92,6 +93,12 @@
      (simple-service
       'custom-udev-rules udev-service-type
       (list nvidia-driver))
+
+     ;; Hard code in the LD_LIBRARY_PATH to the CUDA driver
+     ;; RMS forgive me
+     (simple-service
+      'cuda-ld-path session-environment-service-type
+      (list (cons "LD_LIBRARY_PATH" (file-append nvidia-driver "/lib"))))
 
      ;; Ensure the nvidia kernel modules load
      (service kernel-module-loader-service-type
