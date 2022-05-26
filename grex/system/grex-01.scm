@@ -36,7 +36,7 @@
                    (addresses
                     (list (network-address
                            (device "eno2")
-                           (value "10.0.0.1/24"))))
+                           (value "10.10.1.1/24"))))
                    (provision '(fpga-static-networking)))))
    (operating-system-user-services base-operating-system)))
 
