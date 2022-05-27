@@ -3,6 +3,7 @@
   #:use-module (gnu services networking)
   #:use-module (gnu services ssh)
   #:use-module (gnu services linux)
+  #:use-module (gnu services base)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages python)
@@ -96,6 +97,12 @@
      (simple-service
       'custom-udev-rules udev-service-type
       (list nvidia-driver))
+
+     ;; Enable realtime stuff and unlimited memory locking (for PSRDADA)
+     (pam-limits-service
+      (list
+       (pam-limits-entry "@realtime" 'both 'rtprio 99)
+       (pam-limits-entry "@realtime" 'both 'memlock 'unlimited)))
 
      ;; Hard code in the LD_LIBRARY_PATH to the CUDA driver
      ;; We need this because *all* CUDA stuff pretty much needs
