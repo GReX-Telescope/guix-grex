@@ -75,6 +75,10 @@
       (check? #f))
      %base-file-systems))
 
+   ;; Add the 'realtime' group
+   (groups (cons (user-group (system? #t) (name "realtime"))
+                 %base-groups))
+
    ;; Default User
    (users
     (cons
