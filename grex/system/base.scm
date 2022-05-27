@@ -20,7 +20,7 @@
   #:use-module (grex packages psrdada)
   #:use-module (nongnu system linux-initrd))
 
-(define admin-groups '("wheel" "netdev" "tty" "input"))
+(define admin-groups '("wheel" "netdev" "tty" "input" "realtime"))
 
 (define-public (admin-user username)
   (user-account
