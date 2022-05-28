@@ -20,7 +20,7 @@
   #:use-module (grex packages psrdada)
   #:use-module (nongnu system linux-initrd))
 
-(define admin-groups '("wheel" "netdev" "tty" "input" "realtime"))
+(define admin-groups '("wheel" "netdev" "tty" "input"))
 
 (define-public (admin-user username)
   (user-account
@@ -75,10 +75,6 @@
       (check? #f))
      %base-file-systems))
 
-   ;; Add the 'realtime' group
-   (groups (cons (user-group (system? #t) (name "realtime"))
-                 %base-groups))
-
    ;; Default User
    (users
     (cons
@@ -105,8 +101,8 @@
      ;; Enable realtime stuff and unlimited memory locking (for PSRDADA)
      (pam-limits-service
       (list
-       (pam-limits-entry "@realtime" 'both 'rtprio 99)
-       (pam-limits-entry "@realtime" 'both 'memlock 'unlimited)))
+       (pam-limits-entry "*" 'both 'rtprio 99)
+       (pam-limits-entry "*" 'both 'memlock 'unlimited)))
 
      ;; Hard code in the LD_LIBRARY_PATH to the CUDA driver
      ;; We need this because *all* CUDA stuff pretty much needs
