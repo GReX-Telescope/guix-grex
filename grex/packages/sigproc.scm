@@ -24,7 +24,7 @@
               (sha256
                (base32 "15qnjsmd84dwhfbqdk9khwms2558sn2h1qydlqwvn7w93bkbsny3"))))
      (build-system gnu-build-system)
-     (native-inputs (list libtool autoconf))
+     (native-inputs (list libtool autoconf automake))
      (inputs (list fftw cfitsio))
      (synopsis "Evan Keane's fork of Michael Keith's release of Duncan Lorimer's SIGPROC")
      (description "SIGPROC is a package designed to standardize the initial analysis of
