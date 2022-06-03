@@ -4,6 +4,7 @@
   #:use-module (gnu packages base)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages algebra)
+  #:use-module (gnu packages autotools)
   #:use-module (gnu packages astronomy)
   #:use-module (guix git-download)
   #:use-module (guix build-system gnu)
@@ -23,6 +24,7 @@
               (sha256
                (base32 "15qnjsmd84dwhfbqdk9khwms2558sn2h1qydlqwvn7w93bkbsny3"))))
      (build-system gnu-build-system)
+     (native-inputs (list libtool autoconf))
      (inputs (list fftw cfitsio))
      (synopsis "Evan Keane's fork of Michael Keith's release of Duncan Lorimer's SIGPROC")
      (description "SIGPROC is a package designed to standardize the initial analysis of
