@@ -21,7 +21,7 @@
                     (url "https://github.com/FRBs/sigproc")
                     (commit commit)))
               (sha256
-               (base32 "1d71yrjbb48l3h29vcp1lbkfz8v37y9f38ywf6q8avx19n0rd9h2"))))
+               (base32 "15qnjsmd84dwhfbqdk9khwms2558sn2h1qydlqwvn7w93bkbsny3"))))
      (build-system gnu-build-system)
      (inputs (list fftw cfitsio))
      (synopsis "Evan Keane's fork of Michael Keith's release of Duncan Lorimer's SIGPROC")
