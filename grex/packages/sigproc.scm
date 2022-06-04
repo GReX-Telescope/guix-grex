@@ -27,7 +27,7 @@
                     (url "https://github.com/UCBerkeleySETI/bl_sigproc")
                     (commit commit)))
               (sha256
-               (base32 "05qnjsmd84dwhfbqdk9khwms2558sn2h1qydlqwvn7w93bkbsny3"))))
+               (base32 "0vvbbkx5cksy6dxsmggfscjfasmzdyhi6gra90skk4b024a6l0wf"))))
      (build-system gnu-build-system)
      (native-inputs (list
                      libtool autoconf automake tcsh gfortran-toolchain fftw cfitsio libxml2 perl gsl))
