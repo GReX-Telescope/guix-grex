@@ -30,45 +30,6 @@
    (home-directory (string-append "/home/" username))
    (supplementary-groups admin-groups)))
 
-;; Modify this function from base so we can add the pam_limits.so to sudo and sshd
-(define pam-limits-service-type
-  (let ((security-limits
-         ;; Create /etc/security containing the provided "limits.conf" file.
-         (lambda (limits-file)
-           `(("security/limits.conf"
-              ,limits-file))))
-        (pam-extension
-         (lambda (pam)
-           (let ((pam-limits (pam-entry
-                              (control "required")
-                              (module "pam_limits.so")
-                              (arguments '("conf=/etc/security/limits.conf")))))
-             (if (member (pam-service-name pam)
-                         '("login" "su" "slim" "gdm-password" "sddm" "sshd" "sudo"))
-                 (pam-service
-                  (inherit pam)
-                  (session (cons pam-limits
-                                 (pam-service-session pam))))
-                 pam)))))
-    (service-type
-     (name 'limits)
-     (extensions
-      (list (service-extension etc-service-type security-limits)
-            (service-extension pam-root-service-type
-                               (lambda _ (list pam-extension)))))
-     (description
-      "Install the specified resource usage limits by populating
-@file{/etc/security/limits.conf} and using the @code{pam_limits}
-authentication module."))))
-
-(define* (pam-limits-service #:optional (limits '()))
-  "Return a service that makes selected programs respect the list of
-pam-limits-entry specified in LIMITS via pam_limits.so."
-  (service pam-limits-service-type
-           (plain-file "limits.conf"
-                       (string-join (map pam-limits-entry->string limits)
-                                    "\n"))))
-
 (define-public base-operating-system
   (operating-system
    (host-name "grex-base")
