@@ -39,9 +39,13 @@
    (service static-networking-service-type
             (list (static-networking
                    (addresses
-                    (list (network-address
-                           (device "eno2")
-                           (value "10.10.1.1/24"))))
+                    (list
+                     (network-address
+                      (device "eno2")
+                      (value "10.10.1.1/24"))
+                     (network-address
+                      (device "enp129s0f0")
+                      (value "10.10.6.1/24"))))
                    (provision '(fpga-static-networking)))))
    (operating-system-user-services base-operating-system)))
 
