@@ -3,7 +3,7 @@
   #:use-module (gnu packages shells)
   #:use-module (guix gexp)
   #:use-module (grex system base)
-  #:use-module (guix services networking)
+  #:use-module (gnu services networking)
   #:use-module (gnu))
 
 (define host "grex-01")
