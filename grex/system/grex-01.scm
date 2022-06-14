@@ -36,6 +36,20 @@
  ;; to match the RPI that talks to the SNAP FPGA board
  (services
   (cons*
+   (service nftables-service-type
+            (nftables-configuration
+             (ruleset (plain-file "nftables.conf"
+                                  "
+flush ruleset
+
+table inet nat {
+    chain postrouting {
+        type nat hook postrouting priority 100;
+        # Masquerade the Pi's addresses for the internet (eno1)
+        oifname eno1 masquerade;
+    }
+}
+"))))
    (service static-networking-service-type
             (list (static-networking
                    (addresses

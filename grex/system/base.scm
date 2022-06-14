@@ -119,9 +119,15 @@
                 "nvidia_modeset"
                 "nvidia_uvm"))
 
-     ;; Allow substitutes
      (modify-services
       %base-services
+      ;; Allow forwarding
+      (sysctl-service-type
+       config =>
+       (sysctl-configuration
+        (settings (append '(("net.ipv4.ip_forward" . "1"))
+                          %default-sysctl-settings))))
+     ;; Allow substitutes
       (guix-service-type
        config => (guix-configuration
                   (inherit config)
