@@ -1,6 +1,7 @@
 (define-module (grex system base)
   #:use-module (gnu)
   #:use-module (gnu services networking)
+  #:use-module (gnu services sysctl)
   #:use-module (gnu services ssh)
   #:use-module (gnu services linux)
   #:use-module (gnu services base)
