@@ -57,7 +57,7 @@ table inet nat {
                     (list
                      (network-address
                       (device "eno2")
-                      (value "10.10.1.1/24"))
+                      (value "192.168.0.1/24"))
                      (network-address
                       (device "enp129s0f0")
                       (value "10.10.6.1/24"))))
