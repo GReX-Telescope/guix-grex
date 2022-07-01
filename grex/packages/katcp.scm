@@ -1,6 +1,7 @@
 (define-module (grex packages katcp)
  #:use-module (guix packages)
  #:use-module (guix licenses)
+ #:use-module (guix download)
  #:use-module (guix build-system python))
 
 (define-public python-katcp
