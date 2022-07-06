@@ -60,7 +60,7 @@ table inet nat {
                       (value "192.168.0.1/24"))
                      (network-address
                       (device "enp129s0f0")
-                      (value "10.10.6.1/24"))))
+                      (value "192.168.5.1/24"))))
                    (provision '(fpga-static-networking)))))
    (operating-system-user-services base-operating-system)))
 
