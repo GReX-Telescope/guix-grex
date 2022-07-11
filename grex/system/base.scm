@@ -120,6 +120,10 @@
                 "nvidia_modeset"
                 "nvidia_uvm"))
 
+     ;; Use the Prometheus Node Exporter Service to get data to Grafana
+     (service prometheus-node-exporter-service-type
+              (prometheus-node-exporter-configuration))
+
      (modify-services
       %base-services
       ;; Allow forwarding
