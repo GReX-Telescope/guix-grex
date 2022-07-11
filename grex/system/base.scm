@@ -123,7 +123,9 @@
                 "nvidia_uvm"))
 
      ;; Use the Prometheus Node Exporter Service to get data to Grafana
-     (service prometheus-node-exporter-service-type)
+     (service prometheus-node-exporter-service-type
+              (prometheus-node-exporter-configuration
+               (web-listen-address "0.0.0.0:9100")))
 
      (modify-services
       %base-services
