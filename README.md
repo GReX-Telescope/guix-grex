@@ -1,7 +1,7 @@
 # GReX Guix Packages
 
 This repo provides the system configuration and associated packages for the GReX
-Guix components
+Guix components.
 
 ## Channel
 
