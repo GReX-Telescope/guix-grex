@@ -93,6 +93,7 @@
      ;; Enable SSH
      (service openssh-service-type
               (openssh-configuration
+               (gateway-ports? #t) ;; Allow ports exposed from the Pi to be accessed via this server (MnC)
                (password-authentication? #t)
                (x11-forwarding? #t)))
 
