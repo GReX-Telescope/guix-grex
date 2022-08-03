@@ -14,7 +14,7 @@
 
 (define-public heimdall-astro
   (let ((commit "9d3cb9e90678ac1761aec12928b865ef0dd5dcf6")
-        (revision "106"))
+        (revision "107")) ; This follows the number of commits by 1 because I messsed up
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))
