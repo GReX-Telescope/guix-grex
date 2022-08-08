@@ -18,9 +18,7 @@
   #:use-module (gnu system pam)
   #:use-module (nongnu packages linux)
   #:use-module (grex packages nvidia)
-  #:use-module (grex packages dedisp)
-  #:use-module (grex packages heimdall)
-  #:use-module (grex packages psrdada)
+  #:use-module (grex packages pipeline)
   #:use-module (nongnu system linux-initrd))
 
 (define admin-groups '("wheel" "netdev" "tty" "input"))
