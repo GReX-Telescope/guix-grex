@@ -169,5 +169,5 @@
       ;; Bake in pipeline software
       dedisp
       psrdada
-      heimdall-astro)
+      heimdall-dsa)
      %base-packages))))
