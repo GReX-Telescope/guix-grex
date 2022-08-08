@@ -1,5 +1,5 @@
 (define-module (grex packages cuda)
- #:use-module (guix packages)
+  #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (non-free cuda))
 

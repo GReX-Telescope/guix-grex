@@ -1,6 +1,4 @@
 (define-module (grex packages pipeline)
-  #:use-module (grex packages psrdada)
-  #:use-module (grex packages dedisp)
   #:use-module (grex packages cuda)
   #:use-module (guix packages)
   #:use-module (guix gexp)
