@@ -14,8 +14,8 @@
   #:use-module (guix licenses))
 
 (define-public heimdall-dsa
-  (let ((commit "b1df268dc43ff5972752527a53a12d8af52c27f7")
-        (revision "108")) ; This follows the number of commits by 1 because I messsed up
+  (let ((commit "557aea04ce91329adc0d454a8199ee4f4593139c")
+        (revision "109"))
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))
@@ -25,7 +25,7 @@
                     (url "https://github.com/GReX-Telescope/heimdall-astro")
                     (commit commit)))
               (sha256
-               (base32 "09291sq8n535zbpvnwhab3jhmvm463383r5q0s6i0lgdk5dagrrh"))))
+               (base32 "1nw35ci10xsihi9abihsqcsa12mpvyfhhywfb03b6jpl4rcij78z"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
      (inputs (list cuda-grex psrdada dedisp boost rdma-core))
