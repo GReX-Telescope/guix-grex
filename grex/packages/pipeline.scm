@@ -14,8 +14,8 @@
   #:use-module (guix licenses))
 
 (define-public heimdall-dsa
-  (let ((commit "557aea04ce91329adc0d454a8199ee4f4593139c")
-        (revision "109"))
+  (let ((commit "2734266cee3a74830be62313df69c846516c0d7f")
+        (revision "110"))
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))
@@ -25,7 +25,7 @@
                     (url "https://github.com/GReX-Telescope/heimdall-astro")
                     (commit commit)))
               (sha256
-               (base32 "1nw35ci10xsihi9abihsqcsa12mpvyfhhywfb03b6jpl4rcij78z"))))
+               (base32 "07036srvbnwrxf5s3n5j1kd0vc3dw2vny8jv6wiwjx8dl702g8sz"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
      (inputs (list cuda-grex psrdada dedisp boost rdma-core))
