@@ -85,6 +85,9 @@
    ;; Services
    (services
     (cons*
+     ;; Elogind, because users and we're not running a desktop env
+     (service elogind-service-type)
+
      ;; DHCP all network cards by default
      (service dhcp-client-service-type)
 
