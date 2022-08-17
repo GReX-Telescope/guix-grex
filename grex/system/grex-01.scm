@@ -66,10 +66,6 @@ table inet nat {
 
  ;; This server will have a couple admin users
  (users
-  (cons
-   (user-account
-    (inherit (admin-user "kiran"))
-    (shell (file-append fish "/bin/fish")))
-   (append
-    (map admin-user '("liam" "vikram"))
-    (operating-system-users base-operating-system)))))
+  (append
+    (map admin-user '("liam" "vikram" "kiran"))
+    (operating-system-users base-operating-system))))
