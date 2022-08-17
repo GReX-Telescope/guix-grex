@@ -167,7 +167,6 @@
       ;; 7z needed for Julia's package manager
       p7zip
       ;; Bake in pipeline software
-      dedisp
       psrdada
       heimdall-dsa)
      %base-packages))))
