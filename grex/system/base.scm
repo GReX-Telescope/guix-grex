@@ -5,6 +5,7 @@
   #:use-module (gnu services monitoring)
   #:use-module (gnu services ssh)
   #:use-module (gnu services linux)
+  #:use-module (gnu services desktop)
   #:use-module (gnu services base)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
