@@ -1,5 +1,6 @@
 (define-module (grex packages pipeline)
   #:use-module (grex packages cuda)
+  #:use-module (grex packages python)
   #:use-module (guix packages)
   #:use-module (guix gexp)
   #:use-module (gnu packages)
@@ -8,9 +9,11 @@
   #:use-module (gnu packages linux)
   #:use-module (gnu packages boost)
   #:use-module (gnu packages mpi)
+  #:use-module (gnu packages python-xyz)
   #:use-module (guix git-download)
   #:use-module (guix build-system cmake)
   #:use-module (guix build-system gnu)
+  #:use-module (guix build-system python)
   #:use-module (guix licenses))
 
 (define-public heimdall-dsa
@@ -58,3 +61,25 @@ The modular design of PSRDADA includes:
     control and monitoring of distributed processes via scripts, configuration files, text-based socket connections, and a web-based user interface.")
      (license gpl3)
      (home-page "https://github.com/GReX-Telescope/psrdada"))))
+
+(define-public snapctl
+  (let ((commit "0f3b3e00b982a894ab4d0b847716c0f2441b0241")
+        (revision "6"))
+    (package
+     (name "snapctl")
+     (version (git-version "0.1.0" revision commit))
+     (source (origin
+              (method git-fetch)
+              (uri (git-reference
+                    (url "https://github.com/GReX-Telescope/snapctl")
+                    (commit commit)))
+              (sha256
+               (base32
+                "069qla5k5f8qn5zmggjnq5ay8kqdblfznmwqp775qx9j1r9kipnm"))))
+     (build-system python-build-system)
+     (propagated-inputs (list python-loguru python-casperfpga))
+     (native-inputs (list python-black))
+     (home-page "https://github.com/GReX-Telescope/snapctl")
+     (synopsis "SNAP FPGA bringup routines for GReX")
+     (description "SNAP FPGA bringup routines for GReX")
+     (license expat))))

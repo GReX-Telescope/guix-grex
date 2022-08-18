@@ -172,5 +172,6 @@
       p7zip
       ;; Bake in pipeline software
       psrdada
-      heimdall-dsa)
+      heimdall-dsa
+      snapctl)
      %base-packages))))
