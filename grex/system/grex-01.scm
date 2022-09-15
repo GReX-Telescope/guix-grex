@@ -53,6 +53,8 @@ table inet filter {
     ct state { established, related } accept
     # allow from loopback
     iifname lo accept
+    # allow from 10gbe
+    ifname enp129s0f0 accept
     # allow icmp
     ip protocol icmp accept
     ip6 nexthdr icmpv6 accept
