@@ -61,9 +61,6 @@ table inet filter {
     # reject everything else
     reject with icmpx type port-unreachable
   }
-  chain forward {
-    type filter hook forward priority 0; policy drop;
-  }
   chain output {
     type filter hook output priority 0; policy accept;
   }
