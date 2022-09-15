@@ -43,6 +43,33 @@
                                   "
 flush ruleset
 
+# A simple firewall
+table inet filter {
+  chain input {
+    type filter hook input priority 0; policy drop;
+    # early drop of invalid connections
+    ct state invalid drop
+    # allow established/related connections
+    ct state { established, related } accept
+    # allow from loopback
+    iifname lo accept
+    # allow icmp
+    ip protocol icmp accept
+    ip6 nexthdr icmpv6 accept
+    # allow ssh
+    tcp dport ssh accept
+    # reject everything else
+    reject with icmpx type port-unreachable
+  }
+  chain forward {
+    type filter hook forward priority 0; policy drop;
+  }
+  chain output {
+    type filter hook output priority 0; policy accept;
+  }
+}
+
+# Allow the internet on eno1 to be shared
 table inet nat {
     chain postrouting {
         type nat hook postrouting priority 100;
