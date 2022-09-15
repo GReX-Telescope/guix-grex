@@ -81,7 +81,9 @@ table inet nat {
              (config-file (plain-file "dhcpd.conf" "
 subnet 192.168.0.0 netmask 255.255.255.0 {
   range 192.168.0.2 192.168.0.10;
+  option broadcast-address 192.168.0.255;
   option routers 192.168.0.1;
+  option interface-mtu 9000;
 }
 "))
              (interfaces '("enp129s0f0"))))
