@@ -46,21 +46,26 @@ flush ruleset
 table inet nat {
     chain postrouting {
         type nat hook postrouting priority 100;
-        # Masquerade the Pi's addresses for the internet (eno1)
         oifname eno1 masquerade;
     }
 }
 "))))
+   (service dhcpd-service-type
+            (dhcpd-configuration
+             (config-file (plain-file "dhcpd.conf" "
+subnet 192.168.0.0 netmask 255.255.255.0 {
+  range 192.168.0.2 192.168.0.10;
+  option routers 192.168.0.1;
+}
+"))
+             (interfaces '("enp129s0f0"))))
    (service static-networking-service-type
             (list (static-networking
                    (addresses
                     (list
                      (network-address
-                      (device "eno2")
-                      (value "192.168.0.1/24"))
-                     (network-address
                       (device "enp129s0f0")
-                      (value "192.168.5.1/24"))))
+                      (value "192.168.0.1/24"))))
                    (provision '(fpga-static-networking)))))
    (operating-system-user-services base-operating-system)))
 
