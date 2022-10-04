@@ -7,6 +7,7 @@
   #:use-module (gnu services linux)
   #:use-module (gnu services desktop)
   #:use-module (gnu services base)
+  #:use-module (gnu services xorg)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages monitoring)
@@ -126,6 +127,13 @@
                 "nvidia_modeset"
                 "nvidia_uvm"))
 
+     ;; Use lightdm to start X
+     (service lightdm-service-type
+              (lightdm-configuration
+               (xdmcp? #t)
+               (greeters (list (lightdm-gtk-greeter-configuration)))
+               (vnc-server? #t)))
+
      ;; Use the Prometheus Node Exporter Service to get data to Grafana
      (service prometheus-node-exporter-service-type
               (prometheus-node-exporter-configuration
@@ -158,6 +166,8 @@
       ;; Nvidia Driver itself and accoutrements
       nvidia-driver
       nvidia-libs
+      ;; GUI Things
+
       ;; Core stuff
       git
       ;; Python nonsense
