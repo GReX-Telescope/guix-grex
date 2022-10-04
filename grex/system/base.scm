@@ -8,6 +8,7 @@
   #:use-module (gnu services desktop)
   #:use-module (gnu services base)
   #:use-module (gnu services xorg)
+  #:use-module (gnu services lightdm)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages monitoring)
