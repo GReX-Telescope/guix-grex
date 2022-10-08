@@ -126,6 +126,22 @@ is maintained using the excellent numba library.")
    (description "Ordered Dictionary.")
    (license psfl)))
 
+(define-public python-crcmod
+  (package
+   (name "python-crcmod")
+   (version "1.7")
+   (source (origin
+            (method url-fetch)
+            (uri (pypi-uri "crcmod" version))
+            (sha256
+             (base32
+              "07k0hgr42vw2j92cln3klxka81f33knd7459cn3d8aszvfh52w6w"))))
+   (build-system python-build-system)
+   (home-page "http://crcmod.sourceforge.net/")
+   (synopsis "CRC Generator")
+   (description "CRC Generator")
+   (license expat)))
+
 (define-public python-katversion
   (package
    (name "python-katversion")
@@ -169,8 +185,8 @@ is maintained using the excellent numba library.")
      (license bsd-3))))
 
 (define-public python-casperfpga
-  (let ((commit "dcb8051337bf8bd34b3e3e4dde70006866f614ac")
-        (revision "1040"))
+  (let ((commit "1ff980ab3e3a7e5fa47f2b7b7b437ec36e6db417")
+        (revision "1343"))
     (package
      (name "python-casperfpga")
      (version (git-version "0.1.0" revision commit))
@@ -181,7 +197,7 @@ is maintained using the excellent numba library.")
                     (commit commit)))
               (sha256
                (base32
-                "1c4bjpm46zxsr0fyx0azlc6cqdcm4vq788zc1m57l4gvgfbhq6h8"))))
+                "1izbp1xn69wk6qqvh6nqdr237157m7749w6y6pwg4mprcqmckbqi"))))
      (build-system python-build-system)
      (arguments '(#:tests? #f))
      (propagated-inputs (list python-numpy
@@ -190,7 +206,10 @@ is maintained using the excellent numba library.")
                               python-redis
                               python-future
                               python-tftpy
-                              python-odict))
+                              python-odict
+                              python-crcmod
+                              python-requests
+                              python-progressbar2))
      (home-page "https://github.com/GReX-Telescope/casperfpga")
      (synopsis "Software control for CASPER FPGAs ")
      (description "Software control for CASPER FPGAs ")

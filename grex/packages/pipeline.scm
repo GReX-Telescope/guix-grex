@@ -63,8 +63,8 @@ The modular design of PSRDADA includes:
      (home-page "https://github.com/GReX-Telescope/psrdada"))))
 
 (define-public snapctl
-  (let ((commit "d1292edec3ab80b06f17ebe108bc7445e311ba06")
-        (revision "12"))
+  (let ((commit "b94fb67306a679cd26cbf8f1f00edc9779a5e11f")
+        (revision "13"))
     (package
      (name "snapctl")
      (version (git-version "0.1.0" revision commit))
@@ -75,7 +75,7 @@ The modular design of PSRDADA includes:
                     (commit commit)))
               (sha256
                (base32
-                "1shka9c3wm8zl7ybn2lvzslnpv0ji2bc8dklp3wyrl172b3xhv60"))))
+                "1bnwzxskr3d9kan65q4c343a42mc8icr3rrdd4y6qr2kd3jmzqha"))))
      (build-system python-build-system)
      (propagated-inputs (list python-loguru python-casperfpga))
      (native-inputs (list python-black))
