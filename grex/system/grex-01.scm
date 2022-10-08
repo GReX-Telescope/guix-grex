@@ -1,5 +1,6 @@
 ;;; This is the system configuration for the "minor" test server
 (define-module (grex system grex-01)
+  #:declarative? #f
   #:use-module (gnu packages shells)
   #:use-module (guix gexp)
   #:use-module (grex system base)

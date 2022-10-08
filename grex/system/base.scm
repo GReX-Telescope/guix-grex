@@ -1,4 +1,5 @@
 (define-module (grex system base)
+  #:declarative? #f
   #:use-module (gnu)
   #:use-module (gnu services networking)
   #:use-module (gnu services sysctl)
