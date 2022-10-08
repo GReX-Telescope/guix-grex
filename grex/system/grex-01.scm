@@ -61,7 +61,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-service-constructor
-                                    #$iproute2 "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
+                                    #$iproute "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users
