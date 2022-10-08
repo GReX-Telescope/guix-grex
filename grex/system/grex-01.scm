@@ -2,9 +2,11 @@
 (define-module (grex system grex-01)
   #:declarative? #f
   #:use-module (gnu packages shells)
+  #:use-module (gnu packages linux)
   #:use-module (guix gexp)
   #:use-module (grex system base)
   #:use-module (gnu services networking)
+  #:use-module (gnu services shepherd)
   #:use-module (gnu))
 
 (define host "grex-01")
@@ -53,6 +55,13 @@
                       (device "enp129s0f0")
                       (value "192.168.0.1/24"))))
                    (provision '(fpga-static-networking)))))
+   (simple-service 'set-mtu shepherd-root-service-type
+                   (list (shepherd-service
+                          (provision '(set-mtu))
+                          (requirement '(networking))
+                          (one-shot? #t)
+                          (start #~(make-service-constructor
+                                    #$iproute2 "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users
