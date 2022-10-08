@@ -39,53 +39,10 @@
   (cons*
    (service nftables-service-type
             (nftables-configuration
-             (ruleset (plain-file "nftables.conf"
-                                  "
-flush ruleset
-
-# A simple firewall
-table inet filter {
-  chain input {
-    type filter hook input priority 0; policy drop;
-    # early drop of invalid connections
-    ct state invalid drop
-    # allow established/related connections
-    ct state { established, related } accept
-    # allow from loopback
-    iifname lo accept
-    # allow from 10gbe
-    ifname enp129s0f0 accept
-    # allow icmp
-    ip protocol icmp accept
-    ip6 nexthdr icmpv6 accept
-    # allow ssh
-    tcp dport ssh accept
-    # reject everything else
-    reject with icmpx type port-unreachable
-  }
-  chain output {
-    type filter hook output priority 0; policy accept;
-  }
-}
-
-# Allow the internet on eno1 to be shared
-table inet nat {
-    chain postrouting {
-        type nat hook postrouting priority 100;
-        oifname eno1 masquerade;
-    }
-}
-"))))
+             (ruleset (local-file "./nftables.conf"))))
    (service dhcpd-service-type
             (dhcpd-configuration
-             (config-file (plain-file "dhcpd.conf" "
-subnet 192.168.0.0 netmask 255.255.255.0 {
-  range 192.168.0.2 192.168.0.10;
-  option broadcast-address 192.168.0.255;
-  option routers 192.168.0.1;
-  option interface-mtu 9000;
-}
-"))
+             (config-file (local-file "./dhcpd.conf"))
              (interfaces '("enp129s0f0"))))
    (service static-networking-service-type
             (list (static-networking
