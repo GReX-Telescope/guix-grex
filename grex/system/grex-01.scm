@@ -5,7 +5,7 @@
   #:use-module (gnu packages linux)
   #:use-module (guix gexp)
   #:use-module (grex system base)
-  #:use-module (grex system nss)
+  #:use-module (guix system nss)
   #:use-module (gnu services networking)
   #:use-module (gnu services shepherd)
   #:use-module (gnu))
