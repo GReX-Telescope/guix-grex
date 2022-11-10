@@ -3,6 +3,7 @@
   #:declarative? #f
   #:use-module (gnu packages shells)
   #:use-module (gnu packages linux)
+  #:use-module (gnu system nss)
   #:use-module (guix gexp)
   #:use-module (grex system base)
   #:use-module (gnu services networking)
@@ -38,7 +39,7 @@
 
  ;; Setup mDNS so we can talk to the pi via it's hardcoded hostname
  (name-service-switch
-  (hosts-file
+  (hosts
    ;; first, check /etc/hosts
    (list %files
          ;; If the above did not succeed, try
