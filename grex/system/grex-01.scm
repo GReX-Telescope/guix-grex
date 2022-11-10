@@ -5,6 +5,7 @@
   #:use-module (gnu packages linux)
   #:use-module (guix gexp)
   #:use-module (grex system base)
+  #:use-module (grex system nss)
   #:use-module (gnu services networking)
   #:use-module (gnu services shepherd)
   #:use-module (gnu))
@@ -35,6 +36,27 @@
     (mount-point "/mnt/storage")
     (type "ext4"))
    %base-file-systems))
+
+ ;; Setup mDNS so we can talk to the pi via it's hardcoded hostname
+ (name-service-switch
+  (hosts
+   ;; first, check /etc/hosts
+   (list %files
+         ;; If the above did not succeed, try
+         ;; with 'mdns_minimal'.
+         (name-service
+          (name "mdns_minimal")
+          ;; 'mdns_minimal' is authoritative for
+          ;; '.local'.  When it returns "not found",
+          ;; no need to try the next methods.
+          (reaction (lookup-specification
+                     (not-found => return))))
+         ;; Then fall back to DNS.
+         (name-service
+          (name "dns"))
+         ;; Finally, try with the "full" 'mdns'.
+         (name-service
+          (name "mdns")))))
 
  ;; We need to configure system-specific NIC as they need
  ;; to match the RPI that talks to the SNAP FPGA board
@@ -67,5 +89,5 @@
  ;; This server will have a couple admin users
  (users
   (append
-    (map admin-user '("liam" "vikram" "kiran"))
-    (operating-system-users base-operating-system))))
+   (map admin-user '("liam" "vikram" "kiran"))
+   (operating-system-users base-operating-system))))
