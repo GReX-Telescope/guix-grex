@@ -36,25 +36,18 @@
     (type "ext4"))
    %base-file-systems))
 
- ;; We need to configure system-specific NIC as they need
- ;; to match the RPI that talks to the SNAP FPGA board
  (services
   (cons*
+   ;; Setup our simple firewall
    (service nftables-service-type
             (nftables-configuration
              (ruleset (local-file "./nftables.conf"))))
+   ;; DHCP Server on the 10GbE line for SNAP, Pi, and ourselves
    (service dhcpd-service-type
             (dhcpd-configuration
              (config-file (local-file "./dhcpd.conf"))
              (interfaces '("enp129s0f0"))))
-   (service static-networking-service-type
-            (list (static-networking
-                   (addresses
-                    (list
-                     (network-address
-                      (device "enp129s0f0")
-                      (value "192.168.0.1/24"))))
-                   (provision '(fpga-static-networking)))))
+   ;; Hacky MTU setting
    (simple-service 'set-mtu shepherd-root-service-type
                    (list (shepherd-service
                           (provision '(set-mtu))
