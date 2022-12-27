@@ -159,7 +159,6 @@
      (list
       ;; Nvidia Driver itself and accoutrements
       nvidia-driver
-      nvidia-libs
       ;; GUI Things
       ;; Core stuff
       git
