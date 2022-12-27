@@ -22,6 +22,7 @@
   #:use-module (gnu packages package-management)
   #:use-module (gnu system pam)
   #:use-module (nongnu packages linux)
+  #:use-module (nongnu services nvidia)
   #:use-module (grex packages nvidia)
   #:use-module (grex packages pipeline)
   #:use-module (nongnu system linux-initrd))
@@ -52,9 +53,6 @@
    (kernel-arguments (append
                       '("modprobe.blacklist=nouveau")
                       %default-kernel-arguments))
-
-   ;; Tell guix that the nvidia driver is loadable
-   (kernel-loadable-modules (list nvidia-driver))
 
    ;; Guix told me to add this
    (initrd-modules
@@ -104,11 +102,6 @@
                (password-authentication? #t)
                (x11-forwarding? #t)))
 
-     ;; Create udev rule for nvidia
-     (simple-service
-      'custom-udev-rules udev-service-type
-      (list nvidia-driver))
-
      ;; Enable realtime stuff and unlimited memory locking (for PSRDADA)
      (pam-limits-service
       (list
@@ -123,12 +116,8 @@
       'cuda-ld-path session-environment-service-type
       (list (cons "LD_LIBRARY_PATH" (file-append nvidia-driver "/lib"))))
 
-     ;; Ensure the nvidia kernel modules load
-     (service kernel-module-loader-service-type
-              '("ipmi_devintf"
-                "nvidia"
-                "nvidia_modeset"
-                "nvidia_uvm"))
+     ;; NVIDIA as a service
+     (service nvidia-service-type)
 
      ;; Use lightdm to start X
      (service lightdm-service-type
@@ -170,7 +159,6 @@
       nvidia-driver
       nvidia-libs
       ;; GUI Things
-
       ;; Core stuff
       git
       ;; Python nonsense
