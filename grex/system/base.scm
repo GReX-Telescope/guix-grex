@@ -24,6 +24,7 @@
   #:use-module (gnu packages compression)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
+  #:use-module (nongnu packages nvidia)
   #:use-module (grex packages pipeline)
   ; System
   #:use-module (gnu system pam)
