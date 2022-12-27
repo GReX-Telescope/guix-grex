@@ -1,5 +1,5 @@
 (define-module (grex packages pipeline)
-  #:use-module (grex packages cuda)
+  #:use-module (non-free packages cuda)
   #:use-module (grex packages python)
   #:use-module (guix packages)
   #:use-module (guix gexp)
@@ -32,7 +32,7 @@
                (base32 "10xhg2lyiv8i0r93bm5kzbny03nv9p2w0y4h2j29rkgy8fpm3aq5"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
-     (inputs (list cuda-grex psrdada boost rdma-core))
+     (inputs (list cuda psrdada boost rdma-core))
      (synopsis "Transient Detection Pipeline - DSA110 single beam branch")
      (description "")
      (home-page "https://github.com/GReX-Telescope/heimdall-astro")
@@ -51,7 +51,7 @@
                     (commit commit)))
               (sha256 (base32 "17v5ab1zgjbfnyj0ky1hf2ls6ps658a2dg7i78s38fk8yp243q7m"))))
      (build-system cmake-build-system)
-     (inputs (list cuda-grex rdma-core hwloc))
+     (inputs (list cuda rdma-core hwloc))
      (synopsis "PSRDADA is an Open Source software project to support the development of data acquisition and distributed analysis systems")
      (description
       "DADA stands for Distributed Acquisition and Data Analysis, and it consist of a C library and applications.
