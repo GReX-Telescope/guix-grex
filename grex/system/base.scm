@@ -1,6 +1,7 @@
 (define-module (grex system base)
   #:declarative? #f
   #:use-module (gnu)
+  ; Services
   #:use-module (gnu services networking)
   #:use-module (gnu services sysctl)
   #:use-module (gnu services monitoring)
@@ -10,6 +11,8 @@
   #:use-module (gnu services base)
   #:use-module (gnu services xorg)
   #:use-module (gnu services lightdm)
+  #:use-module (nongnu services nvidia)
+  ; Packages
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages monitoring)
@@ -20,11 +23,10 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages compression)
   #:use-module (gnu packages package-management)
-  #:use-module (gnu system pam)
   #:use-module (nongnu packages linux)
-  #:use-module (nongnu services nvidia)
-  #:use-module (grex packages nvidia)
   #:use-module (grex packages pipeline)
+  ; System
+  #:use-module (gnu system pam)
   #:use-module (nongnu system linux-initrd))
 
 (define admin-groups '("wheel" "netdev" "tty" "input"))
