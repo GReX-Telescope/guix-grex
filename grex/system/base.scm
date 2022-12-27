@@ -147,7 +147,9 @@
        config => (guix-configuration
                   (inherit config)
                   (substitute-urls
-                   (append (list "https://substitutes.nonguix.org")
+                   (append (list "https://substitutes.nonguix.org"
+                                 "https://ci.guix.gnu.org"
+                                 "https://guix.bordeaux.inria.fr")
                            %default-substitute-urls))
                   (authorized-keys
                    (append (list (local-file "./nonguix-key.pub")
