@@ -42,6 +42,18 @@
    (service nftables-service-type
             (nftables-configuration
              (ruleset (local-file "./nftables.conf"))))
+   ;; DHCP Client on the WAN ports
+   (service dhcp-client-service-type
+            (dhcp-client-configuration
+             (interfaces '("eno1" "eno2"))))
+   ;; Setup the static network for the 10 GbE port
+   (service static-networking-service-type
+            (list (static-networking
+                   (provision '(static-networking))
+                   (addresses
+                    (list (network-address
+                           (device "enp129s0f0")
+                           (value "192.168.0.1/24")))))))
    ;; DHCP Server on the 10GbE line for SNAP, Pi, and ourselves
    (service dhcpd-service-type
             (dhcpd-configuration
