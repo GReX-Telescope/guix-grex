@@ -75,7 +75,7 @@ The modular design of PSRDADA includes:
                     (commit commit)))
               (sha256
                (base32
-                "1ppmr1kfh99z927vqzcm9y4lsk2lic63dbns5fy9smhr0a94dbf"))))
+                "1ppmr1kfh99z927vqzcm9y4lsk2lic63dbns5fy9smhr0a94dbf8"))))
      (build-system python-build-system)
      (propagated-inputs (list python-loguru python-casperfpga))
      (native-inputs (list python-black))
