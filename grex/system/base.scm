@@ -55,6 +55,8 @@
    ;; At least until we get a build of the FOSS driver
    (kernel-arguments (append
                       '("modprobe.blacklist=nouveau")
+                      ;; Tune some networking settings for the Boardcom NetXtreme II Chipset in the NIC
+                      '("options bnx2x disable_tpa=1 mtu=9000 tx_flow=1 rx_flow=1 rx_coalesce=100 tx_coalesce=40")
                       %default-kernel-arguments))
 
    ;; Guix told me to add this
