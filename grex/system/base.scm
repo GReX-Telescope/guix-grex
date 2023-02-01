@@ -180,5 +180,7 @@
       ;; Bake in pipeline software
       psrdada
       heimdall-dsa
-      snapctl)
+      snapctl
+      ;; Debugging
+      wireshark)
      %base-packages))))
