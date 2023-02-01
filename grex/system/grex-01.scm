@@ -3,6 +3,7 @@
   #:declarative? #f
   #:use-module (gnu packages shells)
   #:use-module (gnu packages linux)
+  #:use-module (gnu packages networking)
   #:use-module (guix gexp)
   #:use-module (grex system base)
   #:use-module (gnu services networking)
