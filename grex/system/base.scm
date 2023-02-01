@@ -16,6 +16,7 @@
   #:use-module (gnu packages vim)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages monitoring)
+  #:use-module (gnu packages networking)
   #:use-module (gnu packages display-managers)
   #:use-module (gnu packages python)
   #:use-module (gnu packages shells)
