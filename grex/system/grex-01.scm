@@ -87,13 +87,6 @@
                                     #$ethtool "/sbin/ethtool -G enp129s0f0 rx 4078;/sbin/ethtool -C enp129s0f0 rx-usecs 0")))))
    (operating-system-user-services base-operating-system)))
 
- ;; Allow wireshark to run as root
- (setuid-programs
-  (append (list (setuid-program
-                 (program (file-append wireshark "/bin/wireshark"))))
-
-          %setuid-programs))
-
  ;; This server will have a couple admin users
  (users
   (append

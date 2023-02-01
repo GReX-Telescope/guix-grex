@@ -184,4 +184,10 @@
       snapctl
       ;; Debugging
       wireshark)
-     %base-packages))))
+     %base-packages))
+
+ ;; Allow wireshark to run as root
+ (setuid-programs
+  (append (list (setuid-program
+                 (program (file-append wireshark "/bin/wireshark"))))
+          %setuid-programs))))
