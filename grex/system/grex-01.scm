@@ -67,6 +67,22 @@
                           (one-shot? #t)
                           (start #~(make-system-constructor
                                     #$iproute "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
+   ;; Set the output queue length
+   (simple-service 'set-mtu shepherd-root-service-type
+                   (list (shepherd-service
+                          (provision '(set-mtu))
+                          (requirement '(networking))
+                          (one-shot? #t)
+                          (start #~(make-system-constructor
+                                    #$iproute "/sbin/ip link set enp129s0f0 138888")))))
+   ;; Set the RX FIFO to maximum
+   (simple-service 'set-ethtool shepherd-root-service-type
+                   (list (shepherd-service
+                          (provision '(set-ethtool))
+                          (requirement '(networking))
+                          (one-shot? #t)
+                          (start #~(make-system-constructor
+                                    #$ethtool "/sbin/ethtool -G enp129s0f0 rx 4078")))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users

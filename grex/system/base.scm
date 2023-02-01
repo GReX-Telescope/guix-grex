@@ -56,7 +56,7 @@
    (kernel-arguments (append
                       '("modprobe.blacklist=nouveau")
                       ;; Tune some networking settings for the Boardcom NetXtreme II Chipset in the NIC
-                      '("options bnx2x disable_tpa=1 mtu=9000 tx_flow=1 rx_flow=1 rx_coalesce=100 tx_coalesce=40")
+                      '("options bnx2x disable_tpa=1 dropless_fc=1")
                       %default-kernel-arguments))
 
    ;; Guix told me to add this
@@ -139,7 +139,8 @@
       (sysctl-service-type
        config =>
        (sysctl-configuration
-        (settings (append '(("net.ipv4.ip_forward" . "1"))
+        (settings (append '(("net.ipv4.ip_forward" . "1")
+                            ("net.core.netdev_max_backlog" . "13888"))
                           %default-sysctl-settings))))
      ;; Allow substitutes
       (guix-service-type
