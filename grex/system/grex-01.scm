@@ -83,7 +83,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$ethtool "/sbin/ethtool -G enp129s0f0 rx 4078")))))
+                                    #$ethtool "/sbin/ethtool -G enp129s0f0 rx 4078;/sbin/ethtool -C enp129s0f0 rx-usecs 0")))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users

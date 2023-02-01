@@ -140,7 +140,9 @@
        config =>
        (sysctl-configuration
         (settings (append '(("net.ipv4.ip_forward" . "1")
-                            ("net.core.netdev_max_backlog" . "13888"))
+                            ("net.core.netdev_max_backlog" . "13888")
+                            ("net.core.rmem_max" . "8388608")
+                            ("net.core.rmem_default" . "8388608"))
                           %default-sysctl-settings))))
      ;; Allow substitutes
       (guix-service-type
