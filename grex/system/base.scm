@@ -189,6 +189,6 @@
 
  ;; Allow wireshark to run as root
  (setuid-programs
-  (append (list (setuid-program
-                 (program (file-append wireshark "/bin/wireshark"))))
+  (append (list (setuid-program (program (file-append wireshark "/bin/wireshark")))
+                (setuid-program (program (file-append wireshark "/bin/dumpcap"))))
           %setuid-programs))))
