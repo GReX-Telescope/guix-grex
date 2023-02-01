@@ -69,13 +69,13 @@
                           (start #~(make-system-constructor
                                     #$iproute "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
    ;; Set the output queue length
-   (simple-service 'set-mtu shepherd-root-service-type
+   (simple-service 'set-queue shepherd-root-service-type
                    (list (shepherd-service
-                          (provision '(set-mtu))
+                          (provision '(set-queue))
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$iproute "/sbin/ip link set enp129s0f0 138888")))))
+                                    #$iproute "/sbin/ip link set enp129s0f0 txqueuelen 138888")))))
    ;; Set the RX FIFO to maximum
    (simple-service 'set-ethtool shepherd-root-service-type
                    (list (shepherd-service
