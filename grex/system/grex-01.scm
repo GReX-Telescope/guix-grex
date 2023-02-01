@@ -5,7 +5,7 @@
   #:use-module (gnu packages linux)
   #:use-module (gnu packages networking)
   #:use-module (guix gexp)
-  #:use-module (guix system setuid)
+  #:use-module (gnu system setuid)
   #:use-module (grex system base)
   #:use-module (gnu services networking)
   #:use-module (gnu services shepherd)
