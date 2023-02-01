@@ -29,6 +29,7 @@
   #:use-module (grex packages pipeline)
   ; System
   #:use-module (gnu system pam)
+  #:use-module (gnu system setuid)
   #:use-module (nongnu system linux-initrd))
 
 (define admin-groups '("wheel" "netdev" "tty" "input"))
