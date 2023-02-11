@@ -66,8 +66,8 @@ The modular design of PSRDADA includes:
      (home-page "https://github.com/GReX-Telescope/psrdada"))))
 
 (define-public snapctl
-  (let ((commit "5730729a61a1305730f74c58dd156625dd970a23")
-        (revision "36"))
+  (let ((commit "53290bccee17f7bb4224d18b65ffcf032f48e922")
+        (revision "38"))
     (package
      (name "snapctl")
      (version (git-version "0.1.0" revision commit))
@@ -78,7 +78,7 @@ The modular design of PSRDADA includes:
                     (commit commit)))
               (sha256
                (base32
-                "1ppmr1kfh99z927vqzcm9y4lsk2lic63dbns5fy9smhr0a94dbf8"))))
+                "15b4lf6a8z4k7q2vh2xqklh16cgr3h9m6jnzndqw9prxn0245jir"))))
      (build-system python-build-system)
      (propagated-inputs (list python-loguru python-casperfpga))
      (native-inputs (list python-black))
@@ -87,23 +87,23 @@ The modular design of PSRDADA includes:
      (description "SNAP FPGA bringup routines for GReX")
      (license expat))))
 
-(define-public t0
+(define-public grex-t0
   (let ((commit "3377ca2366bfa6275350bfb8a01f9bce48c24cc4")
         (revision "303"))
     (package
-     (name "t0")
+     (name "grex-t0")
      (version (git-version "0.4.0" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
-                    (url "https://github.com/GReX-Telescope/T0")
+                    (url "https://github.com/GReX-Telescope/GReX-T0")
                     (commit commit)))
               (sha256
                (base32
                 "1fgrr4yqjsfjmdx4lj2p8ljab5bfh2l927f53350aixiykb5fix0"))))
      (build-system cargo-build-system)
      (inputs (list))
-     (home-page "https://github.com/GReX-Telescope/T0")
+     (home-page "https://github.com/GReX-Telescope/GReX-T0")
      (synopsis "Tier-0 processing for GReX")
      (description "Capture packets, decode them, sort, downsample, and exfil")
      (license expat))))
