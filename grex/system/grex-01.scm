@@ -89,5 +89,5 @@
  ;; This server will have a couple admin users
  (users
   (append
-   (map admin-user '("liam" "vikram" "kiran"))
+   (map admin-user '("liam" "vikram" "kiran" "sash"))
    (operating-system-users base-operating-system))))
