@@ -161,11 +161,11 @@ is maintained using the excellent numba library.")
    (license bsd-3)))
 
 (define-public python-katcp
-  (let ((commit "770a9b9386b555633bfb8d68360f964d5d6f462d")
-        (revision "1704"))
+  (let ((commit "eaffc934bc543508ac68c5b205a2e4b67a1c958d")
+        (revision "1721"))
     (package
      (name "python-katcp")
-     (version (git-version "0.9.1" revision commit))
+     (version (git-version "0.9.3" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
@@ -173,7 +173,7 @@ is maintained using the excellent numba library.")
                     (commit commit)))
               (sha256
                (base32
-                "0rna79w2jdkwzd3d4nqsnx6iqab8v8irdks59clqkcssjyyyzf54"))))
+                "1vxvzlajazxdhvswx3nifvbbziwii1s7qga1gs3kwsb7ij4mqcal"))))
      (build-system python-build-system)
      (propagated-inputs (list python-future python-ply python-tornado python-katversion python-wheel))
      (native-inputs (list python-nose python-mock))
@@ -185,8 +185,8 @@ is maintained using the excellent numba library.")
      (license bsd-3))))
 
 (define-public python-casperfpga
-  (let ((commit "361b2b2aa6401d4e881ab64687c965531f7b1c69")
-        (revision "1353"))
+  (let ((commit "bd5aac4a50c79f7576b6c5678dadff9da82a91d8")
+        (revision "1347"))
     (package
      (name "python-casperfpga")
      (version (git-version "0.1.0" revision commit))
@@ -197,7 +197,7 @@ is maintained using the excellent numba library.")
                     (commit commit)))
               (sha256
                (base32
-                "07k7ilm9dh1zcwh9lifzv91kqna9c6j7pg52x1binfycvmg9zgz4"))))
+                "0rapaw7cyjbh0faywyshl0x26bf8nsc6psi7qapj29rqcnjrrhwg"))))
      (build-system python-build-system)
      (arguments '(#:tests? #f))
      (propagated-inputs (list python-numpy
