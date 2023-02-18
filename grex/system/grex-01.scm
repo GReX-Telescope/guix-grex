@@ -69,7 +69,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$iproute (format #f "/sbin/ip link set dev ~A mtu 9000" data-nic))))))
+                                    #$iproute "/sbin/ip link set dev " #$data-nic " mtu 9000")))))
    ;; Set the output queue length
    (simple-service 'set-queue shepherd-root-service-type
                    (list (shepherd-service
@@ -77,7 +77,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$iproute (format #f "/sbin/ip link set ~A txqueuelen 138888" data-nic))))))
+                                    #$iproute "/sbin/ip link set " #$data-nic " txqueuelen 138888")))))
    ;; Set the RX FIFO to maximum
    (simple-service 'set-ethtool shepherd-root-service-type
                    (list (shepherd-service
@@ -85,8 +85,8 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$ethtool (format #f "/sbin/ethtool -G ~A rx 4078;" data-nic)
-                                    #$ethtool (format #f "/sbin/ethtool -C ~A rx-usecs 0" data-nic))))))
+                                    #$ethtool "/sbin/ethtool -G " #$data-nic " rx 4078;"
+                                    #$ethtool "/sbin/ethtool -C " #$data-nic " rx-usecs 0")))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users
