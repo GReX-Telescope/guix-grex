@@ -11,6 +11,8 @@
   #:use-module (gnu))
 
 (define host "grex-01")
+(define data-nic "enp129s0f0")
+(define non-data-nics '("eno1" "eno2"))
 
 (operating-system
  ;; We start off the same as the "base" system
@@ -46,20 +48,20 @@
    ;; DHCP Client on the WAN ports
    (service dhcp-client-service-type
             (dhcp-client-configuration
-             (interfaces '("eno1" "eno2"))))
+             (interfaces non-data-nics)))
    ;; Setup the static network for the 10 GbE port
    (service static-networking-service-type
             (list (static-networking
                    (provision '(static-networking))
                    (addresses
                     (list (network-address
-                           (device "enp129s0f0")
+                           (device data-nic)
                            (value "192.168.0.1/24")))))))
    ;; DHCP Server on the 10GbE line for SNAP, Pi, and ourselves
    (service dhcpd-service-type
             (dhcpd-configuration
              (config-file (local-file "./dhcpd.conf"))
-             (interfaces '("enp129s0f0"))))
+             (interfaces (list data-nic))))
    ;; Hacky MTU setting
    (simple-service 'set-mtu shepherd-root-service-type
                    (list (shepherd-service
@@ -67,7 +69,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$iproute "/sbin/ip link set dev enp129s0f0 mtu 9000")))))
+                                    #$iproute (string "/sbin/ip link set dev " data-nic " mtu 9000"))))))
    ;; Set the output queue length
    (simple-service 'set-queue shepherd-root-service-type
                    (list (shepherd-service
@@ -75,7 +77,7 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$iproute "/sbin/ip link set enp129s0f0 txqueuelen 138888")))))
+                                    #$iproute (string "/sbin/ip link set " data-nic " txqueuelen 138888"))))))
    ;; Set the RX FIFO to maximum
    (simple-service 'set-ethtool shepherd-root-service-type
                    (list (shepherd-service
@@ -83,7 +85,8 @@
                           (requirement '(networking))
                           (one-shot? #t)
                           (start #~(make-system-constructor
-                                    #$ethtool "/sbin/ethtool -G enp129s0f0 rx 4078;/sbin/ethtool -C enp129s0f0 rx-usecs 0")))))
+                                    #$ethtool (string "/sbin/ethtool -G " data-nic " rx 4078;")
+                                    #$ethtool (string "/sbin/ethtool -C " data-nic " rx-usecs 0"))))))
    (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users
