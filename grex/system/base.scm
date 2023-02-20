@@ -184,6 +184,7 @@
       psrdada
       heimdall-dsa
       snapctl
+      parallel
       ;; Debugging
       wireshark)
      %base-packages))
