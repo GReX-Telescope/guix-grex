@@ -143,7 +143,8 @@
        (sysctl-configuration
         (settings (append '(("net.ipv4.ip_forward" . "1")
                             ("net.core.netdev_max_backlog" . "250000")
-                            ("net.core.rmem_max" . "536870912")
+                            ("net.core.netdev_budget" . "600")
+                            ("net.core.rmem_max" . "1073741824")
                             ("net.core.rmem_default" . "16777216"))
                           %default-sysctl-settings))))
      ;; Allow substitutes
