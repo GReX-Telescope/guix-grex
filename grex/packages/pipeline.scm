@@ -20,8 +20,8 @@
   #:use-module (guix licenses))
 
 (define-public heimdall-dsa
-  (let ((commit "7ab8c07794a0b6693c54bdcf79e32f546f2e7aa5")
-        (revision "113"))
+  (let ((commit "b003ce2551cc9416c717ebe6f928fc8a793b850d")
+        (revision "114"))
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))
@@ -32,7 +32,7 @@
                     (commit commit)
                     (recursive? #t)))
               (sha256
-               (base32 "0g45y6famlqz3x9b19h71pvb2yr7a27phcj42z5s2w118f429m5n"))))
+               (base32 "1b3vpy0d8g00l261mmy9x7d77fhfips0kdfg64cc0001af9nbnb0"))))
      (build-system cmake-build-system)
      (arguments '(#:tests? #f))
      (inputs (list cuda psrdada boost rdma-core))
