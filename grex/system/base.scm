@@ -61,7 +61,7 @@
                       ;; Tune some networking settings for the Boardcom NetXtreme II Chipset in the NIC
                       '("options bnx2x disable_tpa=1 dropless_fc=1")
                       ;; Help out T0 by preventing the linux scheduler from doing *any* work on the NUMA node of the NIC
-                      '("isolcpus=8,9,10,11")
+                      '("isolcpus=8,9,10,11,12,13,14,15")
                       %default-kernel-arguments))
 
    ;; Guix told me to add this
