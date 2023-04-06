@@ -133,6 +133,9 @@
                (greeters (list (lightdm-gtk-greeter-configuration)))
                (vnc-server? #t)))
 
+     ;; Then ask guix to include the rest of the normal desktop stuff
+     %desktop-services
+
      ;; Use the Prometheus Node Exporter Service to get data to Grafana
      (service prometheus-node-exporter-service-type
               (prometheus-node-exporter-configuration
