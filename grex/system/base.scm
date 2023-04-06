@@ -133,8 +133,6 @@
                (greeters (list (lightdm-gtk-greeter-configuration)))
                (vnc-server? #t)))
 
-     ;; Then ask guix to include the rest of the normal desktop stuff
-     %desktop-services
 
      ;; Use the Prometheus Node Exporter Service to get data to Grafana
      (service prometheus-node-exporter-service-type
@@ -165,7 +163,10 @@
                   (authorized-keys
                    (append (list (local-file "./nonguix-key.pub")
                                  (local-file "./guixhpc-key.pub"))
-                           %default-authorized-guix-keys)))))))
+                           %default-authorized-guix-keys)))))
+
+     ;; Then ask guix to include the rest of the normal desktop stuff
+     %desktop-services))
 
    ;; Base system packages
    (packages
