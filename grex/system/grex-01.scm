@@ -8,6 +8,7 @@
   #:use-module (grex system base)
   #:use-module (gnu services networking)
   #:use-module (gnu services shepherd)
+  #:use-module (gnu services desktop)
   #:use-module (gnu))
 
 (define host "grex-01")
@@ -87,7 +88,8 @@
                           (start #~(make-system-constructor
                                     #$ethtool "/sbin/ethtool -G " #$data-nic " rx 4078;"
                                     #$ethtool "/sbin/ethtool -C " #$data-nic " rx-usecs 0")))))
-   (operating-system-user-services base-operating-system)))
+   (operating-system-user-services base-operating-system)
+   %desktop-services))
 
  ;; This server will have a couple admin users
  (users
