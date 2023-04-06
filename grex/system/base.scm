@@ -140,7 +140,7 @@
                (web-listen-address "0.0.0.0:8082")))
 
      (modify-services
-      %base-services
+      %desktop-services
       ;; Allow forwarding
       (sysctl-service-type
        config =>
@@ -163,9 +163,7 @@
                   (authorized-keys
                    (append (list (local-file "./nonguix-key.pub")
                                  (local-file "./guixhpc-key.pub"))
-                           %default-authorized-guix-keys)))))
-
-     %desktop-services))
+                           %default-authorized-guix-keys)))))))
 
    ;; Base system packages
    (packages
