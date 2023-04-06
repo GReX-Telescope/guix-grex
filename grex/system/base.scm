@@ -126,7 +126,6 @@
      (service lightdm-service-type
               (lightdm-configuration
                (xdmcp? #t)
-               (greeters (list (lightdm-gtk-greeter-configuration)))
                (vnc-server? #t)))
 
 
