@@ -122,12 +122,8 @@
      ;; NVIDIA as a service
      (service nvidia-service-type)
 
-     ;; Use lightdm to start X
-     (service lightdm-service-type
-              (lightdm-configuration
-               (xdmcp? #t)
-               (vnc-server? #t)))
-
+     ;; Use GNOME
+     (service gnome-desktop-service-type)
 
      ;; Use the Prometheus Node Exporter Service to get data to Grafana
      (service prometheus-node-exporter-service-type
