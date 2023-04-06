@@ -9,7 +9,6 @@
   #:use-module (gnu services linux)
   #:use-module (gnu services desktop)
   #:use-module (gnu services base)
-  #:use-module (gnu services xorg)
   #:use-module (gnu services lightdm)
   #:use-module (nongnu services nvidia)
   ; Packages
