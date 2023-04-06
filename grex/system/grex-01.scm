@@ -88,8 +88,7 @@
                           (start #~(make-system-constructor
                                     #$ethtool "/sbin/ethtool -G " #$data-nic " rx 4078;"
                                     #$ethtool "/sbin/ethtool -C " #$data-nic " rx-usecs 0")))))
-   (operating-system-user-services base-operating-system)
-   %desktop-services))
+   (operating-system-user-services base-operating-system)))
 
  ;; This server will have a couple admin users
  (users

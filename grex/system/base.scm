@@ -163,7 +163,9 @@
                   (authorized-keys
                    (append (list (local-file "./nonguix-key.pub")
                                  (local-file "./guixhpc-key.pub"))
-                           %default-authorized-guix-keys)))))))
+                           %default-authorized-guix-keys)))))
+
+     %desktop-services))
 
    ;; Base system packages
    (packages
