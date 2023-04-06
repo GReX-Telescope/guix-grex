@@ -132,6 +132,11 @@
 
      (modify-services
       %desktop-services
+      ;; Remove network manager
+      (delete network-manager-service-type)
+      (delete wpa-supplicant-service-type)
+      (delete modem-manager-service-type)
+      (delete usb-modeswitch-service-type)
       ;; Allow forwarding
       (sysctl-service-type
        config =>
