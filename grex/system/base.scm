@@ -57,8 +57,6 @@
    ;; At least until we get a build of the FOSS driver
    (kernel-arguments (append
                       '("modprobe.blacklist=nouveau")
-                      ;; Help out T0 by preventing the linux scheduler from doing *any* work on the NUMA node of the NIC
-                      '("isolcpus=8,9,10,11,12,13,14,15")
                       %default-kernel-arguments))
 
    ;; Guix told me to add this
