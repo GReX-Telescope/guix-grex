@@ -12,7 +12,7 @@
   #:use-module (gnu))
 
 (define host "grex-01")
-(define data-nic "enp129s0f0")
+(define data-nic "enp126s0f0")
 (define non-data-nics '("eno1" "eno2"))
 
 (operating-system
