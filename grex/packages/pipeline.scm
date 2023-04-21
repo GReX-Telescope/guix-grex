@@ -1,5 +1,5 @@
 (define-module (grex packages pipeline)
-  #:use-module (non-free cuda)
+  #:use-module (guix-science-nonfree packages cuda)
   #:use-module (grex packages python)
   #:use-module (grex packages rust)
   #:use-module (guix packages)
