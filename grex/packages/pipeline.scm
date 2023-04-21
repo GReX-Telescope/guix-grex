@@ -1,7 +1,6 @@
 (define-module (grex packages pipeline)
   #:use-module (guix-science-nonfree packages cuda)
   #:use-module (grex packages python)
-  #:use-module (grex packages rust)
   #:use-module (guix packages)
   #:use-module (guix gexp)
   #:use-module (gnu packages)
@@ -85,25 +84,4 @@ The modular design of PSRDADA includes:
      (home-page "https://github.com/GReX-Telescope/snapctl")
      (synopsis "SNAP FPGA bringup routines for GReX")
      (description "SNAP FPGA bringup routines for GReX")
-     (license expat))))
-
-(define-public grex-t0
-  (let ((commit "3377ca2366bfa6275350bfb8a01f9bce48c24cc4")
-        (revision "303"))
-    (package
-     (name "grex-t0")
-     (version (git-version "0.4.0" revision commit))
-     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "https://github.com/GReX-Telescope/GReX-T0")
-                    (commit commit)))
-              (sha256
-               (base32
-                "1fgrr4yqjsfjmdx4lj2p8ljab5bfh2l927f53350aixiykb5fix0"))))
-     (build-system cargo-build-system)
-     (inputs (list))
-     (home-page "https://github.com/GReX-Telescope/GReX-T0")
-     (synopsis "Tier-0 processing for GReX")
-     (description "Capture packets, decode them, sort, downsample, and exfil")
      (license expat))))
