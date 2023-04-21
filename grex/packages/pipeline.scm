@@ -64,24 +64,24 @@ The modular design of PSRDADA includes:
      (license gpl3)
      (home-page "https://github.com/GReX-Telescope/psrdada"))))
 
-(define-public snapctl
-  (let ((commit "0f6131834a7f721fcc8e5113fdcd7000fbb2bc84")
-        (revision "41"))
+(define-public snap-bringup
+  (let ((commit "283b68575efd614ad63dba5ccd889f474b6ba177")
+        (revision "44"))
     (package
-     (name "snapctl")
+     (name "snap_bringup")
      (version (git-version "0.1.0" revision commit))
      (source (origin
               (method git-fetch)
               (uri (git-reference
-                    (url "https://github.com/GReX-Telescope/snapctl")
+                    (url "https://github.com/GReX-Telescope/snap_bringup")
                     (commit commit)))
               (sha256
                (base32
-                "0cv37lh6g7jpv13lmsrlszrcndkx8d9k9x3m92y037wvbiw5d6zz"))))
+                "073iad3njfy7xbxy6xbw6f376bshqf566xhd1rdk9462lj1m7a2y"))))
      (build-system python-build-system)
      (propagated-inputs (list python-loguru python-casperfpga))
      (native-inputs (list python-black))
-     (home-page "https://github.com/GReX-Telescope/snapctl")
+     (home-page "https://github.com/GReX-Telescope/snap_bringup")
      (synopsis "SNAP FPGA bringup routines for GReX")
      (description "SNAP FPGA bringup routines for GReX")
      (license expat))))
