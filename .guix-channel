@@ -2,7 +2,7 @@
  (version 0)
  (dependencies
   (channel
-   (name 'guix-science-nonfree)
+   (name guix-science-nonfree)
    (url "https://github.com/guix-science/guix-science-nonfree.git")
    (introduction
     (make-channel-introduction
