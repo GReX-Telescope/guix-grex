@@ -37,25 +37,6 @@
 algorithm")
    (license expat)))
 
-(define-public python-attrs
-  (package
-   (name "python-attrs")
-   (version "22.1.0")
-   (source (origin
-            (method url-fetch)
-            (uri (pypi-uri "attrs" version))
-            (sha256
-             (base32
-              "1di2kd18bc0sdq61sa24sdr9c7xjg3g8ymkw1qfikra7aikc5b99"))))
-   (build-system python-build-system)
-   (native-inputs (list python-cloudpickle python-coverage python-hypothesis python-mypy
-                        python-pre-commit python-pympler python-pytest))
-   (arguments '(#:tests? #f))
-   (home-page "https://www.attrs.org/")
-   (synopsis "Classes Without Boilerplate")
-   (description "Classes Without Boilerplate")
-   (license expat)))
-
 (define-public python-sigpyproc
   (let ((commit "8c2103c0194e254019fa94b765e65b66f10f58b0")
         (revision "145"))
