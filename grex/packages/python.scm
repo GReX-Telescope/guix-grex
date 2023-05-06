@@ -63,33 +63,6 @@ fourier-series, etc.). As pulsar data processing is often time critical, speed
 is maintained using the excellent numba library.")
      (license expat))))
 
-(define-public python-loguru
-  (package
-   (name "python-loguru")
-   (version "0.6.0")
-   (source (origin
-            (method url-fetch)
-            (uri (pypi-uri "loguru" version))
-            (sha256
-             (base32
-              "076l16ilgdb0pjbbkx21d39kzysvlyswdnbghgli79fhb1kx0sq6"))))
-   (build-system python-build-system)
-   (native-inputs (list python-black
-                        python-colorama
-                        python-docutils
-                        python-flake8
-                        python-isort
-                        python-pytest
-                        python-pytest-cov
-                        python-sphinx
-                        python-sphinx-autobuild
-                        python-sphinx-rtd-theme
-                        python-tox))
-   (home-page "https://github.com/Delgan/loguru")
-   (synopsis "Python logging made (stupidly) simple")
-   (description "Python logging made (stupidly) simple")
-   (license expat)))
-
 (define-public python-odict
   (package
    (name "python-odict")
