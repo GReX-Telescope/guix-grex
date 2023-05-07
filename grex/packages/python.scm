@@ -139,8 +139,8 @@ is maintained using the excellent numba library.")
      (license bsd-3))))
 
 (define-public python-casperfpga
-  (let ((commit "bd5aac4a50c79f7576b6c5678dadff9da82a91d8")
-        (revision "1347"))
+  (let ((commit "4318d6e3797802f646203bc7728d5fa7f2f0aa77")
+        (revision "1348"))
     (package
      (name "python-casperfpga")
      (version (git-version "0.1.0" revision commit))
@@ -151,7 +151,7 @@ is maintained using the excellent numba library.")
                     (commit commit)))
               (sha256
                (base32
-                "0rapaw7cyjbh0faywyshl0x26bf8nsc6psi7qapj29rqcnjrrhwg"))))
+                "0z8lq7103dw8whpsspapx12821820hyyz8m4pvlrs896z9alv7zr"))))
      (build-system python-build-system)
      (arguments '(#:tests? #f))
      (propagated-inputs (list python-numpy
