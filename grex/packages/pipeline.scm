@@ -19,8 +19,8 @@
   #:use-module (guix licenses))
 
 (define-public heimdall-dsa
-  (let ((commit "84c70ae46acaa21f5c0da5920db86e430b0f4929")
-        (revision "98"))
+  (let ((commit "156296dfccaf92851426641836bf477bcd9d1eed")
+        (revision "100"))
     (package
      (name "heimdall-astro")
      (version (git-version "0.1" revision commit))
